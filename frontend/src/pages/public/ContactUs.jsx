@@ -43,7 +43,6 @@ export default function ContactUs() {
     <div className="section">
       <div className="container" style={{ maxWidth: 960 }}>
         <div className="section-header">
-          <span className="section-eyebrow">Secretariat Assistance</span>
           <h1 className="section-title">Contact Us & Inquiries</h1>
           <p className="section-subtitle">
             Have questions regarding thumb impression verification, travel visit appointments, or online consultations?

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star, Quote, Sparkles, Video, Play, MessageCircle, HeartHandshake } from 'lucide-react';
+import { Star, Quote, Video, Play, MessageCircle, HeartHandshake } from 'lucide-react';
 import api from '../../services/api';
 import TestimonialCarousel from '../../components/testimonials/TestimonialCarousel';
 
@@ -83,10 +83,6 @@ export default function Testimonials() {
       <div className="container">
         {/* Header */}
         <div className="section-header" style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto var(--space-10) auto' }}>
-          <span className="section-eyebrow">
-            <Sparkles size={14} />
-            <span>Seeker Reflections</span>
-          </span>
           <h1 className="section-title">Experiences & Testimonials</h1>
           <p className="section-subtitle">
             Words of gratitude and transformation from seekers across the globe whose lives were illuminated
@@ -102,7 +98,6 @@ export default function Testimonials() {
         {/* Complete Seeker Reflections Grid */}
         <div style={{ marginTop: 'var(--space-12)' }}>
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto var(--space-8) auto' }}>
-            <span className="section-eyebrow">Verified Reviews</span>
             <h2 className="section-title">All Seeker Testimonials</h2>
           </div>
 
@@ -134,15 +129,15 @@ export default function Testimonials() {
                 </div>
 
                 <blockquote style={{ fontStyle: 'italic', color: 'var(--color-text)', fontSize: '0.98rem', lineHeight: 1.65, flexGrow: 1, marginBottom: 'var(--space-6)', fontFamily: 'var(--font-display)' }}>
-                  "{t.quote}"
+                  "{t.quote || t.content || ''}"
                 </blockquote>
 
                 <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)' }}>
                   <strong style={{ display: 'block', color: 'var(--color-primary)', fontSize: '1.1rem', fontFamily: 'var(--font-serif)' }}>
-                    {t.clientName}
+                    {t.clientName || t.seekerName || 'Destined Seeker'}
                   </strong>
                   <span style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
-                    {t.clientLocation} {t.consultationType ? `• ${t.consultationType}` : ''}
+                    {t.clientLocation || t.seekerLocation || ''} {t.consultationType ? `• ${t.consultationType}` : ''}
                   </span>
                 </div>
               </div>

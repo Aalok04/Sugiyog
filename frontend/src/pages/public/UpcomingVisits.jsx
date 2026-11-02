@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, Calendar, Filter, Globe2, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, MapPin, Calendar, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import VisitCard from '../../components/cards/VisitCard';
@@ -61,10 +61,6 @@ export default function UpcomingVisits() {
       <div className="container">
         {/* Header */}
         <div className="section-header" style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto var(--space-10) auto' }}>
-          <span className="section-eyebrow">
-            <Globe2 size={14} />
-            <span>Swami Ji's World Itinerary</span>
-          </span>
           <h1 className="section-title">Upcoming City Visits & Global Darshan</h1>
           <p className="section-subtitle">
             Pujya Swami Ji journeys to major international and domestic cities to grant personal Nadi Shastra consultations,

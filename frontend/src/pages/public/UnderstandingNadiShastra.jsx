@@ -134,7 +134,6 @@ export default function UnderstandingNadiShastra() {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-eyebrow">Sacred Vedic Heritage</span>
           <h1 className="section-title">Understanding Ancient Nadi Shastra</h1>
           <p className="section-subtitle">
             The extraordinary mystical science of destiny inscribed on sacred palm leaves (*Ola Suvadi*) by Maharishi Agasthiya and the Sapta Rishis.
@@ -210,7 +209,6 @@ export default function UnderstandingNadiShastra() {
           {/* The 16 Kandams Overview */}
           <div>
             <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
-              <span className="section-eyebrow">Comprehensive Destiny Chapters</span>
               <h2 style={{ fontSize: '2.2rem', color: 'var(--color-primary)' }}>The 16 Sacred Kandams (Chapters)</h2>
               <p style={{ maxWidth: 700, margin: '0 auto', color: 'var(--color-text-muted)' }}>
                 Nadi Shastra divides human experience into 16 distinct life chapters. Chapter 1 (General Kaandam) is the foundational starting point, followed by specialized chapters chosen according to your life priorities.

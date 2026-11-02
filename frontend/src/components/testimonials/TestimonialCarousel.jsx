@@ -57,7 +57,13 @@ export default function TestimonialCarousel({ testimonials = [] }) {
     setCurrentIndex((prev) => (prev + 1) % items.length);
   };
 
-  const current = items[currentIndex] || items[0];
+  const current = items[currentIndex] || items[0] || {};
+  const quote = current.quote || current.content || current.testimonialText || current.message || '';
+  const clientName = current.clientName || current.seekerName || current.name || 'Destined Seeker';
+  const clientLocation = current.clientLocation || current.seekerLocation || current.location || '';
+  const consultationType = current.consultationType || current.serviceName || '';
+  const rating = current.rating || 5;
+  const hasVideo = Boolean(current.hasVideo || current.videoUrl);
 
   return (
     <div
@@ -74,7 +80,7 @@ export default function TestimonialCarousel({ testimonials = [] }) {
       {/* Main Active Testimonial Card */}
       <div className="testimonial-active-slide">
         <div className="testimonial-stars-row">
-          {Array.from({ length: current.rating || 5 }).map((_, i) => (
+          {Array.from({ length: rating }).map((_, i) => (
             <Star key={i} size={18} fill="#C49A45" color="#C49A45" />
           ))}
           <span className="testimonial-verified-badge">
@@ -84,23 +90,23 @@ export default function TestimonialCarousel({ testimonials = [] }) {
         </div>
 
         <blockquote className="testimonial-quote-text">
-          "{current.quote}"
+          "{quote}"
         </blockquote>
 
         <div className="testimonial-author-meta">
           <div className="author-details">
-            <h4 className="author-name">{current.clientName}</h4>
+            <h4 className="author-name">{clientName}</h4>
             <p className="author-location">
-              {current.clientLocation} {current.consultationType ? `• ${current.consultationType}` : ''}
+              {clientLocation} {consultationType ? `• ${consultationType}` : ''}
             </p>
           </div>
 
-          {current.hasVideo && (
+          {hasVideo && (
             <button
               type="button"
               className="video-watch-btn"
               onClick={() => setActiveVideoModal(current)}
-              aria-label={`Watch video testimonial of ${current.clientName}`}
+              aria-label={`Watch video testimonial of ${clientName}`}
             >
               <div className="play-circle">
                 <Play size={14} fill="#FFF9EF" color="#FFF9EF" />

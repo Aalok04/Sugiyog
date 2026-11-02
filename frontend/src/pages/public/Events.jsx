@@ -20,7 +20,6 @@ export default function Events() {
     <div className="section">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Spiritual Gatherings</span>
           <h1 className="section-title">Events, Satsangs & Discourses</h1>
           <p className="section-subtitle">
             Join Swami Ji for enlightening satsangs, sacred sound chanting, meditation retreats, and Vedic discourses worldwide.

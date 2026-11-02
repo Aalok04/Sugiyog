@@ -11,7 +11,6 @@ import {
   ArrowLeft,
   MessageCircle,
   Fingerprint,
-  Sparkles,
   ShieldCheck,
   Check,
   User,
@@ -347,10 +346,6 @@ export default function BookConsultation() {
       <div className="container">
         {/* Header */}
         <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto var(--space-8) auto' }}>
-          <span className="section-eyebrow">
-            <Sparkles size={14} />
-            <span>Sacred Appointment Portal</span>
-          </span>
           <h1 className="section-title">Schedule Your Nadi Consultation</h1>
           <p className="section-subtitle">
             Follow our 5-step guided reservation process to request your personal reading with Swami Ji.

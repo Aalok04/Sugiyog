@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Video, MapPin, Globe2, Sparkles, ShieldCheck, Clock, ArrowRight, HeartHandshake } from 'lucide-react';
+import { Video, MapPin, Globe2, ShieldCheck, Clock, ArrowRight, HeartHandshake } from 'lucide-react';
 import api from '../../services/api';
 import ServiceCard from '../../components/cards/ServiceCard';
 import ConsultationFormatCard from '../../components/cards/ConsultationFormatCard';
@@ -20,28 +20,17 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="section" style={{ paddingTop: 'var(--space-12)' }}>
+    <div className="section" style={{ paddingTop: 'var(--space-8)' }}>
       <div className="container">
-        {/* Header */}
-        <div className="section-header" style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto var(--space-12) auto' }}>
-          <span className="section-eyebrow">
-            <Sparkles size={14} />
-            <span>Sacred Consultations</span>
-          </span>
-          <h1 className="section-title">Nadi Shastra Consultation Offerings</h1>
-          <p className="section-subtitle">
-            Illuminated by Sage Agasthiyar’s ancient palm leaves and interpreted by Pujya Swami Ji.
-            Available via live high-definition video worldwide or in-person during scheduled global city tours.
-          </p>
+        {/* Single Line Header */}
+        <div className="section-header" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto var(--space-8) auto' }}>
+          <h1 className="section-title" style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.4rem)', margin: 0 }}>
+            Consultation Offerings
+          </h1>
         </div>
 
         {/* 3 Core Consultation Formats */}
         <div style={{ marginBottom: 'var(--space-16)' }}>
-          <div className="section-header" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto var(--space-8) auto' }}>
-            <span className="section-eyebrow">Primary Formats</span>
-            <h2 className="section-title">Choose How You Wish to Meet Swami Ji</h2>
-          </div>
-
           <div className="format-cards-grid">
             <ConsultationFormatCard
               formatType="ONLINE"
@@ -93,7 +82,6 @@ export default function Services() {
         {/* Specialized Chapters List from API */}
         <div style={{ marginBottom: 'var(--space-16)' }}>
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto var(--space-8) auto' }}>
-            <span className="section-eyebrow">Chapter Inquests</span>
             <h2 className="section-title">Specialized Consultation Offerings</h2>
             <p className="section-subtitle">
               Every consultation addresses specific life questions through the relevant sacred Kandam.
@@ -115,9 +103,6 @@ export default function Services() {
         <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-secondary)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-10)', marginTop: 'var(--space-12)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-8)', alignItems: 'center' }}>
             <div>
-              <span className="section-eyebrow" style={{ color: 'var(--color-secondary-dark)' }}>
-                Vedic Protocol
-              </span>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>
                 Preparing for Your Reading
               </h3>

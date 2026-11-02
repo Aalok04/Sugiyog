@@ -21,7 +21,6 @@ export default function ConsultationFees() {
     <div className="section">
       <div className="container" style={{ maxWidth: 900 }}>
         <div className="section-header">
-          <span className="section-eyebrow">Consultation Guidance</span>
           <h1 className="section-title">Nadi Shastra Consultation Chapters</h1>
           <p className="section-subtitle">
             Explore focused readings guided by Swami Ji. Consultations are available via encrypted online video

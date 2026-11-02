@@ -4,7 +4,6 @@ import {
   Calendar,
   Sparkles,
   ShieldCheck,
-  Globe2,
   MapPin,
   ArrowRight,
   BookOpen,
@@ -119,11 +118,6 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-layout-grid">
             <div className="hero-text-content">
-              <div className="hero-editorial-badge">
-                <Sparkles size={14} />
-                <span>Sacred Vaitheeswaran Koil Tradition</span>
-              </div>
-              
               <h1 className="hero-headline">
                 Ancient Wisdom. <span className="gold-accent">Timeless Guidance.</span>
               </h1>
@@ -185,10 +179,6 @@ export default function Home() {
       <section id="nadi-story" className="story-section">
         <div className="container">
           <div className="story-editorial-centered">
-            <span className="section-eyebrow">
-              <Sparkles size={14} />
-              <span>The Sacred Science of Olai Chuvadi</span>
-            </span>
             <h2 className="section-title">Inscribed by Ancient Rishis for Destined Seekers</h2>
             <p className="story-lead-desc">
               Millennia ago, enlightened sages led by <strong>Maharishi Agasthiyar</strong> inscribed individual soul destinies onto preserved palm leaves (Olai Chuvadi) in South India—awaiting the appointed hour when each destined seeker arrives to uncover their karmic blueprint.
@@ -204,7 +194,6 @@ export default function Home() {
 
           {/* 4-Step Process Section */}
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
-            <span className="section-eyebrow">The 4-Step Consultation Journey</span>
             <h2 className="section-title">How Your Reading Unfolds</h2>
           </div>
 
@@ -257,7 +246,6 @@ export default function Home() {
           {/* 16 Sacred Kandams Accordion / Grid */}
           <div style={{ marginTop: 'var(--space-16)' }}>
             <div className="section-header" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-              <span className="section-eyebrow">Vedic Wisdom Architecture</span>
               <h2 className="section-title">The 16 Sacred Kandams (Life Chapters)</h2>
               <p className="section-subtitle">
                 Each palm leaf manuscript contains specific chapters addressing distinct dimensions of human karma and earthly existence.
@@ -307,10 +295,6 @@ export default function Home() {
             </div>
 
             <div className="profile-content">
-              <span className="section-eyebrow">
-                <Sparkles size={14} />
-                <span>Revered Vedic Seer & Nadi Custodian</span>
-              </span>
               <h2>Pujya Swami Ji</h2>
               <p className="lead-text" style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>
                 A lifelong ascetic and dedicated custodian of the Vaitheeswaran Koil Nadi tradition, Swami Ji has guided seekers worldwide for over 25 years.
@@ -338,7 +322,6 @@ export default function Home() {
       <section className="services-section">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto' }}>
-            <span className="section-eyebrow">Personalized Consultations</span>
             <h2 className="section-title">Sacred Formats Tailored to Every Seeker</h2>
             <p className="section-subtitle">
               Whether connecting via live high-definition video from across the world or meeting Swami Ji during his
@@ -397,7 +380,6 @@ export default function Home() {
           {/* 6 Specialized Offerings from Backend */}
           <div style={{ marginTop: 'var(--space-16)' }}>
             <div className="section-header" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
-              <span className="section-eyebrow">Chapter Offerings</span>
               <h2 className="section-title">Core Services Offered by Swami Ji</h2>
             </div>
 
@@ -431,10 +413,6 @@ export default function Home() {
       <section className="section" style={{ background: 'var(--color-background)' }}>
         <div className="container">
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto' }}>
-            <span className="section-eyebrow">
-              <Globe2 size={14} />
-              <span>Global Spiritual Tours</span>
-            </span>
             <h2 className="section-title">Interactive World Travel Map</h2>
             <p className="section-subtitle">
               Pujya Swami Ji regularly journeys across major international and domestic cities to grant in-person
@@ -450,7 +428,6 @@ export default function Home() {
       <section className="section section-surface">
         <div className="container">
           <div className="section-header">
-            <span className="section-eyebrow">Itinerary Overview</span>
             <h2 className="section-title">Confirmed City Visits</h2>
             <p className="section-subtitle">
               Secure your appointment slot for upcoming in-person tours. Slots are strictly limited to ensure adequate time for every seeker.
@@ -487,10 +464,6 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto var(--space-8) auto' }}>
-            <span className="section-eyebrow">
-              <Sparkles size={14} />
-              <span>Seeker Transformations</span>
-            </span>
             <h2 className="section-title">Reflections of Gratitude & Truth</h2>
             <p className="section-subtitle">
               Authentic words from seekers whose personal, familial, and vocational questions found serene resolution
@@ -514,7 +487,6 @@ export default function Home() {
         <div className="container">
           <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
             <div>
-              <span className="section-eyebrow">Sacred Archives & Discourses</span>
               <h2 className="section-title">Events & Temple Gallery</h2>
               <p className="section-subtitle" style={{ maxWidth: 580, marginBottom: 0 }}>
                 A glimpse into ancient palm leaf repositories, Vedic satsangs, and temple ceremonies conducted under Swami Ji’s guidance.
@@ -564,7 +536,6 @@ export default function Home() {
       <section className="faq-section">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-            <span className="section-eyebrow">Seeker Clarity</span>
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle">
               Everything you need to know about the palm leaf identification process, consultation formats, and remedies.

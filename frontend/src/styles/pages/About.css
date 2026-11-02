@@ -1,0 +1,726 @@
+/* ==========================================================================
+   Sugiyog - About Pujya Swami Ji Page Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Hero Slideshow Section
+   -------------------------------------------------------------------------- */
+.about-hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: 92vh;
+  min-height: 600px;
+  max-height: 880px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a0509;
+}
+
+.about-slideshow-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.4s ease-in-out, transform 7s ease-out;
+  pointer-events: none;
+}
+
+.about-hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Elegant Multi-Stop Dark Vignette Overlay */
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(25, 6, 11, 0.55) 0%,
+    rgba(20, 4, 8, 0.82) 65%,
+    rgba(14, 2, 5, 0.95) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Subtle Golden Radial Glow */
+.about-hero-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(196, 154, 69, 0.12) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* Hero Content Box */
+.about-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 960px;
+  padding: 0 var(--space-6);
+  text-align: center;
+  color: #FFF9EF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.about-hero-label {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-secondary-light, #E3C27E);
+  margin-bottom: var(--space-4);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.about-hero-quote {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.28;
+  color: #FFFBF5;
+  margin-bottom: var(--space-5);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
+  max-width: 860px;
+  transition: opacity 0.5s ease;
+}
+
+.about-hero-author {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 245, 230, 0.9);
+  margin-bottom: var(--space-8);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.about-hero-author::before,
+.about-hero-author::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-secondary));
+}
+
+.about-hero-author::after {
+  background: linear-gradient(90deg, var(--color-secondary), transparent);
+}
+
+.about-hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Slideshow Controls (Prev/Next buttons) */
+.about-slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  background: rgba(30, 8, 12, 0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 154, 69, 0.35);
+  color: #FFF9EF;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-slideshow-arrow:hover {
+  background: var(--color-primary);
+  border-color: var(--color-secondary);
+  color: #FFF9EF;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.about-slideshow-prev {
+  left: 24px;
+}
+
+.about-slideshow-next {
+  right: 24px;
+}
+
+/* Slideshow Indicators / Dots */
+.about-slideshow-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-slide-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--color-secondary);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.about-slide-dot.active {
+  width: 30px;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary);
+}
+
+/* Scroll Down Prompt */
+.about-hero-scroll-prompt {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 245, 230, 0.75);
+  font-size: 0.76rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.about-hero-scroll-prompt:hover {
+  color: var(--color-secondary-light);
+}
+
+.scroll-prompt-icon {
+  animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(5px);
+  }
+  60% {
+    transform: translateY(2px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Swamiji Biography Section (Two-Column Editorial)
+   -------------------------------------------------------------------------- */
+.about-bio-section {
+  padding: var(--space-20) 0;
+  background-color: var(--color-background, #FAF6F0);
+}
+
+.about-bio-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+/* Left Column: Biography Narrative */
+.about-bio-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-bio-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  color: var(--color-primary, #701F2D);
+  line-height: 1.18;
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+
+.about-bio-tagline {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--color-secondary-dark, #8F6E28);
+  margin-bottom: var(--space-6);
+  line-height: 1.5;
+}
+
+.about-bio-paragraph {
+  font-size: 1.02rem;
+  line-height: 1.82;
+  color: var(--color-text, #2C1E1A);
+  margin-bottom: var(--space-4);
+}
+
+.about-bio-paragraph strong {
+  color: var(--color-primary-dark, #4A0E17);
+}
+
+/* Stats / Credentials Pill Bar */
+.about-credentials-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-6) 0 var(--space-8) 0;
+  padding: var(--space-4);
+  background: var(--color-surface, #FFF9EF);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.about-credential-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-credential-num {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.about-credential-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Bio Action Buttons */
+.about-bio-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Right Column: Frame & Portrait Presentation */
+.about-portrait-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-portrait-card-luxury {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-white, #FFFFFF);
+  border-radius: var(--radius-xl, 20px);
+  padding: 14px;
+  box-shadow: 0 16px 40px rgba(53, 37, 30, 0.12);
+  border: 1px solid rgba(196, 154, 69, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-portrait-card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(53, 37, 30, 0.18);
+}
+
+.about-portrait-inner-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(196, 154, 69, 0.45);
+}
+
+.about-portrait-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.about-portrait-caption-box {
+  padding: var(--space-4) var(--space-2) var(--space-2) var(--space-2);
+  text-align: center;
+}
+
+.about-portrait-name {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.about-portrait-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-secondary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 4px 0 0 0;
+}
+
+.about-portrait-lineage {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Spiritual Philosophy & Teachings Section
+   -------------------------------------------------------------------------- */
+.about-teachings-section {
+  padding: var(--space-20) 0;
+  background-color: var(--color-surface, #FFF9EF);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-teachings-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto var(--space-12) auto;
+}
+
+.about-teachings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+.about-teaching-card {
+  background: var(--color-white, #FFFFFF);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-teaching-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-teaching-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(53, 37, 30, 0.1);
+  border-color: rgba(196, 154, 69, 0.5);
+}
+
+.about-teaching-card:hover::before {
+  opacity: 1;
+}
+
+.teaching-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.about-teaching-card:hover .teaching-icon-wrap {
+  background: var(--color-primary);
+  color: #FFF9EF;
+  transform: scale(1.05);
+}
+
+.teaching-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.teaching-desc {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   4. Chronological Spiritual Journey & Milestones Section
+   -------------------------------------------------------------------------- */
+.about-journey-section {
+  padding: var(--space-20) 0;
+  background: radial-gradient(circle at 50% 10%, #FAF4E9 0%, #F5E8D4 100%);
+}
+
+.about-journey-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto var(--space-12) auto;
+}
+
+.about-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+  position: relative;
+}
+
+.about-milestone-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border: 1px solid rgba(196, 154, 69, 0.3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-milestone-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(53, 37, 30, 0.1);
+  background: #FFFFFF;
+}
+
+.milestone-epoch-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(112, 31, 45, 0.08);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+  border: 1px solid rgba(112, 31, 45, 0.2);
+}
+
+.milestone-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.milestone-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Vaitheeswaran Koil Heritage Sanctum Banner
+   -------------------------------------------------------------------------- */
+.about-heritage-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-background, #FAF6F0);
+}
+
+.about-heritage-card-grand {
+  background: linear-gradient(135deg, #2D0911 0%, #1A0408 100%);
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-8);
+  color: #FFF9EF;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(26, 4, 8, 0.35);
+}
+
+.about-heritage-card-grand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(196, 154, 69, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.heritage-grand-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: #FFFBF5;
+  line-height: 1.25;
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+.heritage-grand-desc {
+  max-width: 800px;
+  margin: 0 auto var(--space-8) auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 245, 230, 0.9);
+}
+
+.heritage-grand-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. Responsiveness & Mobile Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .about-hero-slideshow {
+    height: 85vh;
+    min-height: 520px;
+  }
+
+  .about-bio-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .about-portrait-wrap {
+    order: -1;
+  }
+
+  .about-portrait-card-luxury {
+    max-width: 380px;
+  }
+
+  .about-credentials-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .about-slideshow-prev {
+    left: 12px;
+  }
+
+  .about-slideshow-next {
+    right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-hero-slideshow {
+    height: 82vh;
+    min-height: 480px;
+  }
+
+  .about-hero-quote {
+    font-size: 1.65rem;
+    line-height: 1.35;
+    margin-bottom: var(--space-4);
+  }
+
+  .about-hero-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  .about-hero-scroll-prompt {
+    display: none;
+  }
+
+  .about-slideshow-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .about-bio-section,
+  .about-teachings-section,
+  .about-journey-section {
+    padding: var(--space-12) 0;
+  }
+
+  .about-teachings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-credentials-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-heritage-card-grand {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .heritage-grand-title {
+    font-size: 1.65rem;
+  }
+
+  .heritage-grand-desc {
+    font-size: 0.94rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-slide {
+    transition: opacity 0.5s ease;
+    transform: none !important;
+  }
+
+  .about-teaching-card,
+  .about-milestone-card,
+  .about-portrait-card-luxury {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .scroll-prompt-icon {
+    animation: none;
+  }
+}

@@ -56,7 +56,6 @@ export default function FAQ() {
     <div className="section">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Clear Authentic Answers</span>
           <h1 className="section-title">Frequently Asked Questions</h1>
           <p className="section-subtitle">
             Everything you need to know about thumb impression indexing, the Yes/No verification process, online readings, and sacred remedies.
