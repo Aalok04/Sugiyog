@@ -184,27 +184,19 @@ export default function Home() {
       {/* 2. Nadi Shastra Introduction & Storytelling */}
       <section id="nadi-story" className="story-section">
         <div className="container">
-          <div className="story-editorial-centered" style={{ maxWidth: 820, margin: '0 auto var(--space-16) auto', textAlign: 'center' }}>
+          <div className="story-editorial-centered">
             <span className="section-eyebrow">
               <Sparkles size={14} />
               <span>The Sacred Science of Olai Chuvadi</span>
             </span>
             <h2 className="section-title">Inscribed by Ancient Rishis for Destined Seekers</h2>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--color-text)', marginBottom: 'var(--space-4)' }}>
-              Millennia ago, enlightened sages including <strong>Maharishi Agasthiyar</strong>, <strong>Bhrigu</strong>,
-              and <strong>Kaushika</strong> entered profound superconscious meditation (Tapasya). With transcendental insight,
-              they perceived the karmic trajectories, life milestones, and spiritual remedies for seekers destined to inquire
-              about their path in our modern era.
-            </p>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--color-text)', marginBottom: 'var(--space-6)' }}>
-              These revelations were meticulously inscribed in ancient poetic Tamil script (Vatta Ezhuthu) onto dried palm leaves
-              (Olai Chuvadi). Deposited in sacred temple libraries in South India, each leaf bundle awaits the exact appointed time
-              when the seeker arrives to uncover their truth.
+            <p className="story-lead-desc">
+              Millennia ago, enlightened sages led by <strong>Maharishi Agasthiyar</strong> inscribed individual soul destinies onto preserved palm leaves (Olai Chuvadi) in South India—awaiting the appointed hour when each destined seeker arrives to uncover their karmic blueprint.
             </p>
 
-            <div>
+            <div style={{ marginTop: 'var(--space-4)' }}>
               <Link to="/nadi-shastra" className="btn btn-outline">
-                <span>Explore the Complete Nadi Shastra History</span>
+                <span>Explore Nadi Shastra History</span>
                 <ArrowRight size={15} />
               </Link>
             </div>
@@ -220,44 +212,44 @@ export default function Home() {
             <div className="process-step-card">
               <div className="step-number-badge">1</div>
               <div className="step-card-icon">
-                <Fingerprint size={32} />
+                <Fingerprint size={28} />
               </div>
-              <h3 className="step-title">Submit Thumb Impression</h3>
+              <h3 className="step-title">Submit Thumbprint</h3>
               <p className="step-desc">
-                Provide a clear print of your thumb on white paper (Right for Males, Left for Females) through our secure booking form or WhatsApp.
+                Provide your thumb impression (Right for Men, Left for Women) securely online or via WhatsApp.
               </p>
             </div>
 
             <div className="process-step-card">
               <div className="step-number-badge">2</div>
               <div className="step-card-icon" style={{ color: 'var(--color-secondary-dark)' }}>
-                <Search size={32} />
+                <Search size={28} />
               </div>
-              <h3 className="step-title">Archive Bundle Search</h3>
+              <h3 className="step-title">Archive Leaf Search</h3>
               <p className="step-desc">
-                Our archivists in Vaitheeswaran Koil classify your whorls according to 108 categories to locate candidate palm leaf bundles.
+                Archivists in Vaitheeswaran Koil locate candidate leaf bundles across 108 classical classifications.
               </p>
             </div>
 
             <div className="process-step-card">
               <div className="step-number-badge">3</div>
               <div className="step-card-icon">
-                <CheckCircle size={32} />
+                <CheckCircle size={28} />
               </div>
-              <h3 className="step-title">Leaf Verification (Yes/No)</h3>
+              <h3 className="step-title">Leaf Verification</h3>
               <p className="step-desc">
-                Swami Ji reads index verses regarding your family, planetary signs, and vocation. You only reply "Yes" or "No" until the exact leaf matches.
+                Swami Ji recites verifying index verses—you only answer "Yes" or "No" until your exact leaf matches.
               </p>
             </div>
 
             <div className="process-step-card">
               <div className="step-number-badge">4</div>
               <div className="step-card-icon" style={{ color: 'var(--color-secondary-dark)' }}>
-                <Sparkles size={32} />
+                <Sparkles size={28} />
               </div>
-              <h3 className="step-title">Destiny Reading & Remedies</h3>
+              <h3 className="step-title">Destiny Reading</h3>
               <p className="step-desc">
-                Join a live, personal consultation unlocking your life predictions, milestone timings, and sacred Pariharam remedies with translation.
+                Join a live, personal consultation unlocking your life predictions and sacred Pariharam remedies with translation.
               </p>
             </div>
           </div>
@@ -320,21 +312,14 @@ export default function Home() {
                 <span>Revered Vedic Seer & Nadi Custodian</span>
               </span>
               <h2>Pujya Swami Ji</h2>
-              <p className="lead-text" style={{ color: 'var(--color-primary)' }}>
-                A lifelong ascetic and dedicated custodian of the Vaitheeswaran Koil Nadi Shastra tradition,
-                Swami Ji has guided seekers, scholars, dignitaries, and families across five continents.
+              <p className="lead-text" style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>
+                A lifelong ascetic and dedicated custodian of the Vaitheeswaran Koil Nadi tradition, Swami Ji has guided seekers worldwide for over 25 years.
               </p>
-              <p>
-                Trained in the sacred hermeneutics of archaic Tamil poetic texts and classical Vedic astrology (Jyotish),
-                Swami Ji approaches every reading not as a fortune-teller, but as a compassionate spiritual elder interpreting
-                divine records to illuminate a seeker's dharmic path.
-              </p>
-              <p>
-                His teachings emphasize that while past karmas (Prarabdha Karma) create present conditions, free will, sincere
-                prayer, charitable acts, and sacred temple pilgrimages possess the power to purify obstacles and restore inner serenity.
+              <p style={{ lineHeight: 1.7, marginBottom: 'var(--space-4)', color: 'var(--color-text)' }}>
+                Interpreting ancient poetic verses with compassionate spiritual discernment, Swami Ji reveals your soul's karmic blueprint and prescribes sacred Vedic remedies (Pariharam) to dissolve life obstacles.
               </p>
 
-              <div style={{ display: 'flex', gap: 'var(--space-4)', marginTop: 'var(--space-8)', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 'var(--space-4)', marginTop: 'var(--space-6)', flexWrap: 'wrap' }}>
                 <Link to="/about" className="btn btn-primary btn-lg">
                   <span>Learn About Swami Ji’s Lineage</span>
                   <ArrowRight size={15} />
