@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Image as ImageIcon, Camera, Sparkles, X, Eye } from 'lucide-react';
+import { Image as ImageIcon, Camera, X, Eye } from 'lucide-react';
 import api from '../../services/api';
 
 const CURATED_GALLERY_COLLECTION = [
@@ -96,15 +96,7 @@ export default function Gallery() {
       <div className="container">
         {/* Header */}
         <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto var(--space-8) auto' }}>
-          <span className="section-eyebrow">
-            <Sparkles size={14} />
-            <span>Visual Darshan</span>
-          </span>
-          <h1 className="section-title">Sacred Gallery & Archival Moments</h1>
-          <p className="section-subtitle">
-            Glimpses into ancient palm leaf repositories (Olai Chuvadi), ashram sadhana, international darshan tours,
-            and ceremonial Vedic gatherings under Pujya Swami Ji’s stewardship.
-          </p>
+          <h1 className="section-title">Event Gallery</h1>
         </div>
 
         {/* Filter Pills */}

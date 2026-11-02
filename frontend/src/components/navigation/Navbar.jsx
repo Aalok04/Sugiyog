@@ -64,7 +64,7 @@ export default function Navbar() {
     { to: '/upcoming-visits', label: 'Global Tours' },
     { to: '/testimonials', label: 'Experiences' },
     { to: '/events', label: 'Spiritual Events' },
-    { to: '/gallery', label: 'Sacred Gallery' },
+    { to: '/gallery', label: 'Event Gallery' },
     { to: '/faq', label: 'FAQs' },
     { to: '/contact', label: 'Contact' },
   ];

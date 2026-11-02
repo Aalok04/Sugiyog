@@ -77,7 +77,7 @@ export default function Footer() {
               <Link to="/nadi-shastra#kandams">The 16 Sacred Kandams</Link>
               <Link to="/testimonials">Seeker Testimonials & Video</Link>
               <Link to="/events">Discourses & Events</Link>
-              <Link to="/gallery">Sacred Palm Leaf Gallery</Link>
+              <Link to="/gallery">Event Gallery</Link>
               <Link to="/faq">Seeker FAQ</Link>
               <Link to="/admin/login">Admin Secretariat Portal</Link>
             </div>
