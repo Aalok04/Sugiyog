@@ -1,0 +1,32 @@
+{
+  "name": "sugiyog",
+  "version": "1.0.0",
+  "description": "Sugiyog - Global Nadi Shastra Consultation & Appointment Booking Platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend",
+    "lint": "echo \"Linting frontend and backend...\"",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "nadi-shastra",
+    "consultation",
+    "appointment-booking",
+    "react",
+    "express",
+    "mysql",
+    "prisma"
+  ],
+  "author": "Sugiyog Architecture Team",
+  "license": "ISC"
+}

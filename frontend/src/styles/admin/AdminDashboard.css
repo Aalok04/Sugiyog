@@ -1,0 +1,192 @@
+/* Sugiyog Luxury Admin Dashboard Styles */
+
+.admin-dashboard-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.dashboard-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.85rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dashboard-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* 6-Grid Stat Cards */
+.stats-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: 0 1px 4px rgba(53, 37, 30, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(53, 37, 30, 0.08);
+  border-color: var(--color-secondary);
+}
+
+.stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon.maroon {
+  background-color: rgba(112, 31, 45, 0.1);
+  color: var(--color-primary);
+}
+
+.stat-icon.gold {
+  background-color: rgba(196, 154, 69, 0.15);
+  color: var(--color-secondary-dark);
+}
+
+.stat-icon.green {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.stat-icon.purple {
+  background-color: #EDE7F6;
+  color: #5E35B1;
+}
+
+.stat-icon.blue {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.stat-icon.teal {
+  background-color: #E0F2F1;
+  color: #00897B;
+}
+
+.stat-value {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.stat-title {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Charts Grid */
+.dashboard-grid-charts {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+/* Two-column Layout for Tables / Recent */
+.dashboard-grid-2 {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: var(--space-6);
+}
+
+.admin-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: 0 1px 4px rgba(53, 37, 30, 0.05);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-4);
+}
+
+.admin-card-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.btn-icon {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.btn-icon:hover {
+  background: var(--color-primary);
+  color: #FFF9EF;
+}
+
+@media (max-width: 1300px) {
+  .stats-grid-6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid-charts,
+  .dashboard-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid-6 {
+    grid-template-columns: 1fr;
+  }
+}

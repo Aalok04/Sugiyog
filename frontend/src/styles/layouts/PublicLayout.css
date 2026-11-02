@@ -1,0 +1,277 @@
+.public-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.public-main {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-surface {
+  background-color: var(--color-surface);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--space-12) auto;
+}
+
+.section-title {
+  margin-bottom: var(--space-4);
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   Responsive Public Page Grids & Split Layouts (Fix for Mobile Squishing)
+   ========================================================================= */
+
+/* About Swami Ji Hero Card */
+.about-hero-card {
+  background: var(--color-surface-card);
+  padding: var(--space-10);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.about-portrait-card {
+  border: 3px solid var(--color-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.about-portrait-card img {
+  width: 100%;
+  height: 460px;
+  max-height: 460px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.about-cta-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Contact Page Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-10);
+}
+
+.contact-form-box {
+  background: var(--color-white);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-details-box {
+  background: var(--color-surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-accent);
+}
+
+/* General Responsive Grids */
+.responsive-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.responsive-three-col {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 860px) {
+  .about-hero-card {
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+  }
+
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .about-portrait-card {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .about-portrait-card img {
+    height: 380px;
+    max-height: 380px;
+  }
+
+  .about-cta-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .about-cta-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .contact-form-box,
+  .contact-details-box {
+    padding: var(--space-5);
+  }
+
+  .responsive-two-col,
+  .responsive-three-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .about-portrait-card {
+    max-width: 270px;
+  }
+
+  .about-portrait-card img {
+    height: 320px;
+  }
+}
+
+/* Floating WhatsApp / Quick Assistance Button */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-radius: var(--radius-full);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.floating-whatsapp-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.55);
+  color: #FFFFFF;
+}
+
+/* Floating Book Consultation Button (Mobile Screen Floating CTA) */
+.floating-book-btn {
+  display: none; /* Hidden on desktop screens */
+}
+
+@keyframes bookFloatingPulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(112, 31, 45, 0.45), 0 0 0 0 rgba(196, 154, 69, 0.5);
+  }
+  50% {
+    box-shadow: 0 6px 24px rgba(112, 31, 45, 0.6), 0 0 0 8px rgba(196, 154, 69, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Floating Book CTA on Mobile */
+  .floating-book-btn {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    left: 20px;
+    z-index: 999;
+    background: linear-gradient(135deg, #4A121D 0%, #701F2D 100%);
+    color: #FFF9EF;
+    border: 1.5px solid var(--color-secondary, #C49A45);
+    border-radius: var(--radius-full);
+    padding: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 6px 20px rgba(112, 31, 45, 0.45), 0 0 12px rgba(196, 154, 69, 0.35);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    animation: bookFloatingPulse 3s infinite ease-in-out;
+  }
+
+  .floating-book-btn span {
+    display: none;
+  }
+
+  .floating-book-btn:hover,
+  .floating-book-btn:active {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 10px 24px rgba(112, 31, 45, 0.6), 0 0 18px rgba(196, 154, 69, 0.6);
+    color: #FFFFFF;
+  }
+
+  /* Floating WhatsApp on Mobile */
+  .floating-whatsapp-btn {
+    padding: 0.85rem;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+  }
+
+  .floating-whatsapp-btn span {
+    display: none;
+  }
+}

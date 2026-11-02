@@ -1,0 +1,132 @@
+/* Sugiyog Luxury Button Styling */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary Button - Royal Burgundy */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(112, 31, 45, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 6px 18px rgba(112, 31, 45, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Secondary / Sacred Gold Button */
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: #1a0e05;
+  border-color: var(--color-secondary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(196, 154, 69, 0.25);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-light);
+  border-color: var(--color-secondary-light);
+  box-shadow: 0 6px 20px rgba(196, 154, 69, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Luxury Shimmer Button */
+.btn-luxury {
+  background: linear-gradient(135deg, #701F2D 0%, #521520 100%);
+  color: var(--color-accent);
+  border: 1px solid var(--color-secondary);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(82, 21, 32, 0.35);
+}
+
+.btn-luxury:hover {
+  color: var(--color-white);
+  border-color: var(--color-secondary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(82, 21, 32, 0.45);
+}
+
+/* Outline Button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  color: var(--color-secondary-light);
+  border-color: var(--color-secondary);
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--color-secondary);
+  color: #1a0e05;
+  transform: translateY(-2px);
+}
+
+/* Text Button */
+.btn-text {
+  background: transparent;
+  color: var(--color-primary);
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-text:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 1rem 2.2rem;
+  font-size: var(--text-base);
+  letter-spacing: 0.03em;
+}
+
+.btn-block {
+  width: 100%;
+}

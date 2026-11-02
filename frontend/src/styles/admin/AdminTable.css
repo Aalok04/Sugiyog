@@ -1,0 +1,82 @@
+/* Sugiyog Luxury Admin Table Styles */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: #FFFDF8;
+  box-shadow: 0 1px 4px rgba(53, 37, 30, 0.04);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+  background-color: #FFFDF8;
+}
+
+.admin-table th {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 0.95rem 1.1rem;
+  border-bottom: 2px solid var(--color-secondary);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.admin-table td {
+  padding: 0.95rem 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.admin-table tr:hover td {
+  background-color: rgba(196, 154, 69, 0.06);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background-color: rgba(46, 125, 50, 0.12);
+  color: #2E7D32;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.badge-warning {
+  background-color: rgba(237, 108, 2, 0.12);
+  color: #B25E00;
+  border: 1px solid rgba(237, 108, 2, 0.3);
+}
+
+.badge-danger {
+  background-color: rgba(198, 40, 40, 0.12);
+  color: #C62828;
+  border: 1px solid rgba(198, 40, 40, 0.3);
+}
+
+.badge-info {
+  background-color: rgba(196, 154, 69, 0.15);
+  color: var(--color-secondary-dark);
+  border: 1px solid rgba(196, 154, 69, 0.4);
+}

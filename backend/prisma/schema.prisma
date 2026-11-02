@@ -1,0 +1,487 @@
+// Sugiyog - Prisma Schema
+// Database: MySQL 8.0+ / MariaDB
+// Generated for Sugiyog Platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ----------------------------------------------------
+// ENUMS
+// ----------------------------------------------------
+
+enum RoleName {
+  SUPER_ADMIN
+  ADMIN
+  ASSISTANT
+  BOOKING_MANAGER
+  FINANCE_MANAGER
+  CONTENT_MANAGER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  RESCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+enum BookingType {
+  INSTANT
+  REQUEST_BASED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum ConsultationFormat {
+  ONLINE
+  IN_PERSON
+}
+
+enum SlotType {
+  ONLINE
+  IN_PERSON
+}
+
+enum SlotStatus {
+  AVAILABLE
+  BOOKED
+  BLOCKED
+  RESERVED
+}
+
+enum VisitStatus {
+  DRAFT
+  PUBLISHED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum PaymentMethod {
+  ONLINE_GATEWAY
+  BANK_TRANSFER
+  CASH
+  UPI
+  CARD
+  CHEQUE
+  OTHER
+}
+
+// ----------------------------------------------------
+// 1. USER (Seekers / Public Clients)
+// ----------------------------------------------------
+
+model User {
+  id           String    @id @default(cuid())
+  fullName     String    @db.VarChar(150)
+  email        String    @unique @db.VarChar(191)
+  phone        String?   @db.VarChar(50)
+  countryCode  String?   @db.VarChar(10)
+  city         String?   @db.VarChar(100)
+  country      String?   @db.VarChar(100)
+  timezone     String    @default("Asia/Kolkata") @db.VarChar(100)
+  dateOfBirth  DateTime?
+  timeOfBirth  String?   @db.VarChar(20)
+  placeOfBirth String?   @db.VarChar(150)
+  gender       String?   @db.VarChar(20)
+  notes        String?   @db.Text
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  bookings  Booking[]
+  inquiries Inquiry[]
+
+  @@index([email])
+  @@index([phone])
+}
+
+// ----------------------------------------------------
+// 2. ADMIN USER & RBAC (Admin, Assistant, Managers)
+// ----------------------------------------------------
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  fullName     String    @db.VarChar(150)
+  email        String    @unique @db.VarChar(191)
+  passwordHash String    @db.VarChar(255)
+  phone        String?   @db.VarChar(50)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  roleId       String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  role      Role       @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  auditLogs AuditLog[]
+
+  @@index([roleId])
+  @@index([email])
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  name        RoleName @unique
+  displayName String   @db.VarChar(100)
+  description String?  @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  adminUsers  AdminUser[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id          String   @id @default(cuid())
+  code        String   @unique @db.VarChar(100)
+  module      String   @db.VarChar(100)
+  description String?  @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  roles RolePermission[]
+
+  @@index([module])
+}
+
+model RolePermission {
+  id           String   @id @default(cuid())
+  roleId       String
+  permissionId String
+  createdAt    DateTime @default(now())
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
+}
+
+// ----------------------------------------------------
+// 3. SERVICE (Consultation Offerings)
+// ----------------------------------------------------
+
+model Service {
+  id                  String    @id @default(cuid())
+  title               String    @db.VarChar(200)
+  slug                String    @unique @db.VarChar(200)
+  shortDescription    String?   @db.VarChar(500)
+  description         String?   @db.Text
+  durationMinutes     Int       @default(45)
+  price               Decimal   @db.Decimal(10, 2)
+  currency            String    @default("INR") @db.VarChar(10)
+  isOnlineSupported   Boolean   @default(true)
+  isInPersonSupported Boolean   @default(true)
+  isActive            Boolean   @default(true)
+  displayOrder        Int       @default(0)
+  imageUrl            String?   @db.VarChar(500)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  deletedAt           DateTime?
+
+  bookings Booking[]
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+// ----------------------------------------------------
+// 4. TRAVEL & CITY VISITS
+// ----------------------------------------------------
+
+model TravelVisit {
+  id                  String      @id @default(cuid())
+  title               String      @db.VarChar(255)
+  country             String      @db.VarChar(100)
+  city                String      @db.VarChar(100)
+  venueName           String?     @db.VarChar(255)
+  venueAddress        String?     @db.Text
+  venueMapsUrl        String?     @db.VarChar(500)
+  isVenuePrivate      Boolean     @default(false)
+  privateVenueDetails String?     @db.Text
+  startDate           DateTime
+  endDate             DateTime
+  timezone            String      @default("Asia/Kolkata") @db.VarChar(100)
+  status              VisitStatus @default(DRAFT)
+  isPublic            Boolean     @default(false)
+  isBookingOpen       Boolean     @default(false)
+  maxCapacity         Int         @default(0)
+  notes               String?     @db.Text
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  deletedAt           DateTime?
+
+  slots    AvailabilitySlot[]
+  bookings Booking[]
+
+  @@index([country, city])
+  @@index([status, isPublic])
+  @@index([startDate, endDate])
+}
+
+// ----------------------------------------------------
+// 5. APPOINTMENT AVAILABILITY SLOTS
+// ----------------------------------------------------
+
+model AvailabilitySlot {
+  id            String     @id @default(cuid())
+  slotType      SlotType   @default(ONLINE)
+  travelVisitId String?
+  date          DateTime   @db.Date
+  startTime     DateTime
+  endTime       DateTime
+  timezone      String     @default("Asia/Kolkata") @db.VarChar(100)
+  capacity      Int        @default(1)
+  bookedCount   Int        @default(0)
+  status        SlotStatus @default(AVAILABLE)
+  isBlocked     Boolean    @default(false)
+  notes         String?    @db.VarChar(255)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  travelVisit TravelVisit? @relation(fields: [travelVisitId], references: [id], onDelete: SetNull)
+  bookings    Booking[]
+
+  @@index([travelVisitId])
+  @@index([date, slotType, status])
+}
+
+// ----------------------------------------------------
+// 6. BOOKING
+// ----------------------------------------------------
+
+model Booking {
+  id                 String             @id @default(cuid())
+  bookingNumber      String             @unique @db.VarChar(50)
+  userId             String
+  serviceId          String
+  travelVisitId      String?
+  availabilitySlotId String?
+  bookingType        BookingType        @default(INSTANT)
+  consultationFormat ConsultationFormat @default(ONLINE)
+  status             BookingStatus      @default(PENDING)
+  scheduledDate      DateTime?          @db.Date
+  scheduledStartTime DateTime?
+  scheduledEndTime   DateTime?
+  timezone           String             @default("Asia/Kolkata") @db.VarChar(100)
+  preferredDates     String?            @db.Text
+  clientNotes        String?            @db.Text
+  internalAdminNotes String?            @db.Text
+  totalAmount        Decimal            @db.Decimal(10, 2)
+  currency           String             @default("INR") @db.VarChar(10)
+  paymentStatus      PaymentStatus      @default(UNPAID)
+  meetingLink        String?            @db.VarChar(500)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  deletedAt          DateTime?
+
+  user             User              @relation(fields: [userId], references: [id], onDelete: Restrict)
+  service          Service           @relation(fields: [serviceId], references: [id], onDelete: Restrict)
+  travelVisit      TravelVisit?      @relation(fields: [travelVisitId], references: [id], onDelete: SetNull)
+  availabilitySlot AvailabilitySlot? @relation(fields: [availabilitySlotId], references: [id], onDelete: SetNull)
+  payments         Payment[]
+
+  @@index([userId])
+  @@index([serviceId])
+  @@index([travelVisitId])
+  @@index([availabilitySlotId])
+  @@index([bookingNumber])
+  @@index([status, paymentStatus])
+}
+
+// ----------------------------------------------------
+// 7. PAYMENT
+// ----------------------------------------------------
+
+model Payment {
+  id                   String        @id @default(cuid())
+  paymentReference     String        @unique @db.VarChar(100)
+  bookingId            String
+  amount               Decimal       @db.Decimal(10, 2)
+  currency             String        @default("INR") @db.VarChar(10)
+  paymentMethod        PaymentMethod @default(ONLINE_GATEWAY)
+  status               PaymentStatus @default(PENDING)
+  gatewayTransactionId String?       @db.VarChar(255)
+  gatewayName          String?       @db.VarChar(100)
+  receiptUrl           String?       @db.VarChar(500)
+  paidAt               DateTime?
+  refundedAt           DateTime?
+  notes                String?       @db.Text
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+
+  @@index([bookingId])
+  @@index([paymentReference])
+  @@index([status])
+}
+
+// ----------------------------------------------------
+// 8. TESTIMONIAL
+// ----------------------------------------------------
+
+model Testimonial {
+  id               String    @id @default(cuid())
+  clientName       String    @db.VarChar(150)
+  clientLocation   String?   @db.VarChar(150)
+  quote            String    @db.Text
+  fullStory        String?   @db.Text
+  rating           Int       @default(5)
+  consultationType String?   @db.VarChar(100)
+  isFeatured       Boolean   @default(false)
+  isApproved       Boolean   @default(false)
+  avatarUrl        String?   @db.VarChar(500)
+  displayOrder     Int       @default(0)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  deletedAt        DateTime?
+
+  @@index([isApproved, isFeatured])
+}
+
+// ----------------------------------------------------
+// 9. EVENT
+// ----------------------------------------------------
+
+model Event {
+  id               String    @id @default(cuid())
+  title            String    @db.VarChar(255)
+  slug             String    @unique @db.VarChar(255)
+  description      String    @db.Text
+  eventDate        DateTime
+  endDate          DateTime?
+  location         String?   @db.VarChar(255)
+  city             String?   @db.VarChar(100)
+  country          String?   @db.VarChar(100)
+  isOnline         Boolean   @default(false)
+  registrationLink String?   @db.VarChar(500)
+  isPublished      Boolean   @default(false)
+  imageUrl         String?   @db.VarChar(500)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  deletedAt        DateTime?
+
+  @@index([isPublished, eventDate])
+  @@index([slug])
+}
+
+// ----------------------------------------------------
+// 10. MEDIA & GALLERY
+// ----------------------------------------------------
+
+model Media {
+  id        String   @id @default(cuid())
+  fileName  String   @db.VarChar(255)
+  fileUrl   String   @db.VarChar(500)
+  mimeType  String   @db.VarChar(100)
+  fileSize  Int
+  altText   String?  @db.VarChar(255)
+  caption   String?  @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  galleryItems Gallery[]
+}
+
+model Gallery {
+  id           String   @id @default(cuid())
+  title        String   @db.VarChar(255)
+  description  String?  @db.Text
+  category     String   @default("General") @db.VarChar(100)
+  isPublished  Boolean  @default(true)
+  displayOrder Int      @default(0)
+  mediaId      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@index([category, isPublished])
+  @@index([mediaId])
+}
+
+// ----------------------------------------------------
+// 11. INQUIRY
+// ----------------------------------------------------
+
+model Inquiry {
+  id         String        @id @default(cuid())
+  fullName   String        @db.VarChar(150)
+  email      String        @db.VarChar(191)
+  phone      String?       @db.VarChar(50)
+  subject    String        @db.VarChar(255)
+  message    String        @db.Text
+  status     InquiryStatus @default(NEW)
+  adminNotes String?       @db.Text
+  userId     String?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([status])
+  @@index([email])
+}
+
+// ----------------------------------------------------
+// 12. SITE SETTINGS
+// ----------------------------------------------------
+
+model SiteSettings {
+  id          String   @id @default(cuid())
+  key         String   @unique @db.VarChar(100)
+  value       String   @db.Text
+  category    String   @default("general") @db.VarChar(100)
+  description String?  @db.VarChar(255)
+  updatedAt   DateTime @updatedAt
+
+  @@index([key])
+  @@index([category])
+}
+
+// ----------------------------------------------------
+// 13. AUDIT LOG
+// ----------------------------------------------------
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  adminUserId String?
+  action      String   @db.VarChar(100)
+  entityType  String   @db.VarChar(100)
+  entityId    String?  @db.VarChar(100)
+  details     String?  @db.Text
+  ipAddress   String?  @db.VarChar(45)
+  userAgent   String?  @db.VarChar(255)
+  createdAt   DateTime @default(now())
+
+  adminUser AdminUser? @relation(fields: [adminUserId], references: [id], onDelete: SetNull)
+
+  @@index([adminUserId])
+  @@index([entityType, entityId])
+  @@index([action])
+  @@index([createdAt])
+}

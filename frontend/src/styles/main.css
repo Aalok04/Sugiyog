@@ -1,0 +1,32 @@
+/* Sugiyog Global Design System Entry */
+
+@import './themes/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* Components */
+@import './components/Button.css';
+@import './components/Navbar.css';
+@import './components/Footer.css';
+@import './components/ServiceCard.css';
+@import './components/VisitCard.css';
+@import './components/ConsultationFormatCard.css';
+@import './components/GlobalTravelMap.css';
+@import './components/TestimonialCarousel.css';
+@import './components/Forms.css';
+
+/* Layouts */
+@import './layouts/PublicLayout.css';
+@import './layouts/AdminLayout.css';
+
+/* Pages */
+@import './pages/Home.css';
+@import './pages/Services.css';
+@import './pages/Visits.css';
+@import './pages/Booking.css';
+@import './pages/UnderstandingNadi.css';
+@import './pages/FAQ.css';
+
+/* Admin */
+@import './admin/AdminDashboard.css';
+@import './admin/AdminTable.css';
