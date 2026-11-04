@@ -86,10 +86,10 @@ export default function ManageAvailability() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+      <div className="admin-page-header">
         <div>
-          <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Appointment Availability Slots</h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+          <h1>Manage Appointment Availability Slots</h1>
+          <p>
             Control Swami Ji’s consultation hours, slot capacities, and blackout periods.
           </p>
         </div>

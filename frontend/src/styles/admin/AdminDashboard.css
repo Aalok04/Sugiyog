@@ -26,6 +26,13 @@
   font-size: var(--text-sm);
 }
 
+.dashboard-header-actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /* 6-Grid Stat Cards */
 .stats-grid-6 {
   display: grid;
@@ -93,11 +100,13 @@
 }
 
 .stat-value {
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: 1.65rem;
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .stat-title {
@@ -115,6 +124,8 @@
   grid-template-columns: 1.25fr 0.75fr;
   gap: var(--space-6);
   margin-bottom: var(--space-8);
+  min-width: 0;
+  width: 100%;
 }
 
 /* Two-column Layout for Tables / Recent */
@@ -122,6 +133,8 @@
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
   gap: var(--space-6);
+  min-width: 0;
+  width: 100%;
 }
 
 .admin-card {
@@ -130,6 +143,9 @@
   border-radius: var(--radius-md);
   padding: var(--space-6);
   box-shadow: 0 1px 4px rgba(53, 37, 30, 0.05);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .admin-card-header {
@@ -139,7 +155,8 @@
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border);
-  gap: var(--space-4);
+  gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .admin-card-title {
@@ -182,10 +199,44 @@
 @media (max-width: 768px) {
   .stats-grid-6 {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .stat-card {
+    padding: var(--space-4);
+  }
+
+  .admin-card {
+    padding: var(--space-4);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .dashboard-title {
+    font-size: 1.45rem;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .dashboard-header > div:last-child {
+    display: flex;
+    width: 100%;
+    gap: var(--space-2);
+  }
+
+  .dashboard-header > div:last-child .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.6rem;
+  }
+
   .stats-grid-6 {
     grid-template-columns: 1fr;
   }

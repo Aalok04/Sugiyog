@@ -18,11 +18,13 @@ export default function ManagePayments() {
 
   return (
     <div>
-      <div style={{ marginBottom: 'var(--space-6)' }}>
-        <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Payments & Dakshina Ledger</h1>
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-          Consultation fees collected via online gateways and offline cash / temple accounts.
-        </p>
+      <div className="admin-page-header">
+        <div>
+          <h1>Manage Payments & Dakshina Ledger</h1>
+          <p>
+            Consultation fees collected via online gateways and offline cash / temple accounts.
+          </p>
+        </div>
       </div>
 
       <div className="table-container">

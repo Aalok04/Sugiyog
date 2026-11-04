@@ -54,10 +54,10 @@ export default function ManageBookings() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+      <div className="admin-page-header">
         <div>
-          <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Bookings & Seeker Requests</h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+          <h1>Manage Bookings & Seeker Requests</h1>
+          <p>
             Review incoming requests, verify palm leaf requirements, issue meeting links, and confirm appointments.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function ManageBookings() {
             className="form-select"
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            style={{ width: 180 }}
+            style={{ width: '100%', minWidth: 160 }}
           >
             <option value="">All Statuses</option>
             <option value="PENDING">PENDING</option>

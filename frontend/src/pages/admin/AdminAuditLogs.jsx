@@ -18,11 +18,13 @@ export default function AdminAuditLogs() {
 
   return (
     <div>
-      <div style={{ marginBottom: 'var(--space-6)' }}>
-        <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>System Audit Logs & Security History</h1>
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-          Immutable audit trail tracking all administrative creations, status transitions, and capacity changes.
-        </p>
+      <div className="admin-page-header">
+        <div>
+          <h1>System Audit Logs & Security History</h1>
+          <p>
+            Immutable audit trail tracking all administrative creations, status transitions, and capacity changes.
+          </p>
+        </div>
       </div>
 
       <div className="table-container">

@@ -18,10 +18,10 @@ export default function ManageEvents() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+      <div className="admin-page-header">
         <div>
-          <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Spiritual Events & Satsangs</h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+          <h1>Manage Spiritual Events & Satsangs</h1>
+          <p>
             Announce spiritual retreats, sacred pujas, and global discourses.
           </p>
         </div>

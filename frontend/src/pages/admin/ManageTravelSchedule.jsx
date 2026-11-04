@@ -77,10 +77,10 @@ export default function ManageTravelSchedule() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+      <div className="admin-page-header">
         <div>
-          <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Travel Schedule & City Visits</h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+          <h1>Manage Travel Schedule & City Visits</h1>
+          <p>
             Swami Ji's Assistant secretariat controls for itineraries, city stops, and appointment capacity.
           </p>
         </div>

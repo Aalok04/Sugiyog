@@ -154,19 +154,10 @@ export default function ManageGallery() {
   return (
     <div>
       {/* Header with Title and Add Image Button */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 'var(--space-6)',
-          flexWrap: 'wrap',
-          gap: 'var(--space-4)',
-        }}
-      >
+      <div className="admin-page-header">
         <div>
-          <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Media & Gallery</h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+          <h1>Manage Media & Gallery</h1>
+          <p>
             Catalog and upload photographs of Swami Ji, sacred palm leaves, ashram events, and world tours.
           </p>
         </div>

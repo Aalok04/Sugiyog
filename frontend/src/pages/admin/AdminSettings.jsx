@@ -29,11 +29,13 @@ export default function AdminSettings() {
 
   return (
     <div>
-      <div style={{ marginBottom: 'var(--space-6)' }}>
-        <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Platform Configuration & Settings</h1>
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-          Site metadata, official contact details, and booking policies.
-        </p>
+      <div className="admin-page-header">
+        <div>
+          <h1>Platform Configuration & Settings</h1>
+          <p>
+            Site metadata, official contact details, and booking policies.
+          </p>
+        </div>
       </div>
 
       {success && (

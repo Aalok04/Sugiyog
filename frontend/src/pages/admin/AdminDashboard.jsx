@@ -96,7 +96,7 @@ export default function AdminDashboard() {
             Real-time status of Swami Ji’s consultation bookings, tour schedules, and seeker inquiries.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
+        <div className="dashboard-header-actions">
           <Link to="/admin/bookings" className="btn btn-primary btn-sm">
             <CalendarIcon size={14} />
             <span>Manage Bookings</span>

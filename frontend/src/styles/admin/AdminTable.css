@@ -2,19 +2,32 @@
 
 .table-container {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: #FFFDF8;
   box-shadow: 0 1px 4px rgba(53, 37, 30, 0.04);
+  position: relative;
+  display: block;
 }
 
 .admin-table {
   width: 100%;
+  min-width: 680px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.88rem;
   background-color: #FFFDF8;
+}
+
+@media (max-width: 768px) {
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.82rem;
+  }
 }
 
 .admin-table th {

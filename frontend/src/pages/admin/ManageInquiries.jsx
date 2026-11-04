@@ -32,11 +32,13 @@ export default function ManageInquiries() {
 
   return (
     <div>
-      <div style={{ marginBottom: 'var(--space-6)' }}>
-        <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>Manage Seeker Inquiries</h1>
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-          Contact form submissions and travel tour notices submitted by public seekers.
-        </p>
+      <div className="admin-page-header">
+        <div>
+          <h1>Manage Seeker Inquiries</h1>
+          <p>
+            Contact form submissions and travel tour notices submitted by public seekers.
+          </p>
+        </div>
       </div>
 
       <div className="table-container">
