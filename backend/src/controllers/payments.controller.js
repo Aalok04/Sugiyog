@@ -19,4 +19,13 @@ export class PaymentsController {
       next(error);
     }
   }
+
+  static async processDemoPayment(req, res, next) {
+    try {
+      const result = await PaymentsService.processDemoPayment(req.body);
+      return ApiResponse.created(res, result, 'Payment processed successfully (Demo Sandbox)');
+    } catch (error) {
+      next(error);
+    }
+  }
 }

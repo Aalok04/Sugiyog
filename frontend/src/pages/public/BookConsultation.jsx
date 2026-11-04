@@ -18,6 +18,9 @@ import {
   Phone,
   FileText,
   Video,
+  CreditCard,
+  QrCode,
+  DollarSign,
 } from 'lucide-react';
 import api from '../../services/api';
 
@@ -66,6 +69,33 @@ export default function BookConsultation() {
   const [loading, setLoading] = useState(false);
   const [successBooking, setSuccessBooking] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Payment Demonstration State
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [demoPaymentSuccess, setDemoPaymentSuccess] = useState(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('UPI');
+
+  const handleProcessDemoPayment = async () => {
+    if (!successBooking?.id) return;
+    setPaymentLoading(true);
+    try {
+      const res = await api.post('/payments/demo-process', {
+        bookingId: successBooking.id,
+        amount: successBooking.totalAmount,
+        currency: successBooking.currency || 'INR',
+        paymentMethod: selectedPaymentMethod,
+      });
+
+      if (res.success && res.data) {
+        setDemoPaymentSuccess(res.data.payment);
+        setSuccessBooking(res.data.booking);
+      }
+    } catch (err) {
+      alert(err.message || 'Payment simulation failed');
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
 
   // 1. Fetch Services & Published Visits
   useEffect(() => {
@@ -308,7 +338,134 @@ export default function BookConsultation() {
                   {isConfirmed ? 'CONFIRMED' : 'PENDING REVIEW'}
                 </span>
               </div>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--space-3)', paddingTop: 'var(--space-3)', borderTop: '1px dashed var(--color-border)' }}>
+                <span className="review-label">Consultation Dakshina:</span>
+                <span style={{ fontWeight: 700, color: 'var(--color-primary)', fontSize: '1.1rem' }}>
+                  ₹{parseFloat(successBooking.totalAmount || selectedService?.price || 2500).toLocaleString('en-IN')} {successBooking.currency || 'INR'}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--space-2)' }}>
+                <span className="review-label">Payment Status:</span>
+                <span style={{ color: (successBooking.paymentStatus === 'PAID' || demoPaymentSuccess) ? 'var(--color-success)' : '#e67e22', fontWeight: 700 }}>
+                  {(successBooking.paymentStatus === 'PAID' || demoPaymentSuccess) ? 'PAID & VERIFIED ✓' : 'UNPAID (Pending Dakshina)'}
+                </span>
+              </div>
+
+              {(successBooking.payments?.[0]?.paymentReference || demoPaymentSuccess?.paymentReference) && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--space-2)' }}>
+                  <span className="review-label">Payment Ref:</span>
+                  <span style={{ fontFamily: 'monospace', fontWeight: 600, color: 'var(--color-primary)' }}>
+                    {demoPaymentSuccess?.paymentReference || successBooking.payments?.[0]?.paymentReference}
+                  </span>
+                </div>
+              )}
             </div>
+
+            {/* DEMO PAYMENT SANDBOX BOX (FOR CLIENT DEMONSTRATION) */}
+            {successBooking.paymentStatus !== 'PAID' && !demoPaymentSuccess ? (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(196, 154, 69, 0.08) 0%, rgba(138, 30, 43, 0.04) 100%)',
+                border: '1.5px solid var(--color-primary)',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-6)',
+                marginBottom: 'var(--space-6)',
+                textAlign: 'left'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-2)' }}>
+                  <CreditCard size={20} color="var(--color-primary)" />
+                  <strong style={{ fontSize: '1.05rem', color: 'var(--color-primary)' }}>
+                    Demonstration Payment Gateway
+                  </strong>
+                </div>
+                <p style={{ fontSize: '0.86rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>
+                  Demonstrate the full payment collection flow to your client without real money. Selecting an option and clicking pay will record this transaction live into the Temple's Admin Dakshina Ledger.
+                </p>
+
+                <div style={{ display: 'flex', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPaymentMethod('UPI')}
+                    style={{
+                      flex: 1,
+                      padding: '10px 14px',
+                      borderRadius: 'var(--radius-sm)',
+                      border: `1.5px solid ${selectedPaymentMethod === 'UPI' ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                      background: selectedPaymentMethod === 'UPI' ? 'rgba(196, 154, 69, 0.15)' : 'var(--color-surface)',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      fontSize: '0.85rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <QrCode size={16} />
+                    <span>UPI (Instant / QR)</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPaymentMethod('CARD')}
+                    style={{
+                      flex: 1,
+                      padding: '10px 14px',
+                      borderRadius: 'var(--radius-sm)',
+                      border: `1.5px solid ${selectedPaymentMethod === 'CARD' ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                      background: selectedPaymentMethod === 'CARD' ? 'rgba(196, 154, 69, 0.15)' : 'var(--color-surface)',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      fontSize: '0.85rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <CreditCard size={16} />
+                    <span>Card / Netbanking</span>
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleProcessDemoPayment}
+                  disabled={paymentLoading}
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', padding: '12px 20px', fontSize: '0.98rem' }}
+                >
+                  {paymentLoading ? (
+                    <span>Processing Demo Payment...</span>
+                  ) : (
+                    <span>Simulate & Confirm Payment of ₹{parseFloat(successBooking.totalAmount || selectedService?.price || 2500).toLocaleString('en-IN')}</span>
+                  )}
+                </button>
+              </div>
+            ) : (
+              <div style={{
+                background: 'rgba(46, 125, 50, 0.08)',
+                border: '1.5px solid #2e7d32',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-4) var(--space-5)',
+                marginBottom: 'var(--space-6)',
+                textAlign: 'left',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}>
+                <CheckCircle size={28} color="#2e7d32" style={{ flexShrink: 0 }} />
+                <div>
+                  <strong style={{ color: '#2e7d32', display: 'block', fontSize: '0.95rem' }}>
+                    Dakshina Payment Completed & Ledger Synced!
+                  </strong>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
+                    Payment reference <strong>{demoPaymentSuccess?.paymentReference || successBooking.payments?.[0]?.paymentReference}</strong> has been saved and is viewable in real-time in the Admin Dashboard.
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Next Step Guidance */}
             <div style={{ background: 'rgba(196, 154, 69, 0.1)', padding: 'var(--space-5)', borderRadius: 'var(--radius-md)', textAlign: 'left', marginBottom: 'var(--space-8)', fontSize: '0.88rem', border: '1px solid rgba(196, 154, 69, 0.3)' }}>

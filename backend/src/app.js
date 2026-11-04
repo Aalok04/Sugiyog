@@ -39,11 +39,20 @@ app.use(
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, postman) or matching CLIENT_URL
-      if (!origin || origin === config.clientUrl || origin.startsWith('http://localhost:')) {
+      // Allow requests with no origin (like mobile apps, curl, postman)
+      if (!origin) return callback(null, true);
+
+      // Check if origin matches allowed patterns
+      const isAllowed =
+        origin === config.clientUrl ||
+        origin.startsWith('http://localhost:') ||
+        origin.endsWith('.vercel.app') ||
+        origin.includes('sugiyog');
+
+      if (isAllowed) {
         callback(null, true);
       } else {
-        callback(new Error('Blocked by CORS policy'));
+        callback(new Error(`Blocked by CORS policy: ${origin}`));
       }
     },
     credentials: true,
