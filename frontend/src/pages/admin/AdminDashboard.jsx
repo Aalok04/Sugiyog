@@ -172,7 +172,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Mid Section: Visual Trends Chart & Interactive Appointment Calendar */}
-      <div className="dashboard-grid-charts" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-6)', marginBottom: 'var(--space-8)' }}>
+      <div className="dashboard-grid-charts">
         {/* Modern SVG Trends Chart */}
         <div className="admin-card">
           <div className="admin-card-header">
@@ -311,8 +311,19 @@ export default function AdminDashboard() {
             })}
           </div>
 
-          <div style={{ marginTop: 'var(--space-4)', padding: 'var(--space-3)', background: 'var(--color-surface)', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>Selected: {monthNames[calendarMonth]} {selectedCalendarDate}, {calendarYear}</span>
+          <div style={{
+            marginTop: 'var(--space-4)',
+            padding: 'var(--space-3)',
+            background: 'var(--color-surface)',
+            borderRadius: 'var(--radius-sm)',
+            fontSize: '0.85rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '8px'
+          }}>
+            <span>Selected: <strong>{monthNames[calendarMonth]} {selectedCalendarDate}, {calendarYear}</strong></span>
             <Link to="/admin/availability" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
               Manage Slots →
             </Link>
