@@ -216,20 +216,24 @@
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-3);
+    margin-bottom: var(--space-4);
   }
 
   .dashboard-title {
     font-size: 1.45rem;
     line-height: 1.2;
     word-break: break-word;
+    margin-bottom: 4px;
   }
 
+  .dashboard-header-actions,
   .dashboard-header > div:last-child {
     display: flex;
     width: 100%;
     gap: var(--space-2);
   }
 
+  .dashboard-header-actions .btn,
   .dashboard-header > div:last-child .btn {
     flex: 1;
     justify-content: center;
@@ -239,5 +243,16 @@
 
   .stats-grid-6 {
     grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .dashboard-grid-charts {
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .dashboard-grid-2 {
+    gap: var(--space-4);
   }
 }
