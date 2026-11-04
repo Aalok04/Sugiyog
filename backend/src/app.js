@@ -105,7 +105,9 @@ apiV1.use('/inquiries', inquiriesRoutes);
 apiV1.use('/admin', adminRoutes);
 apiV1.use('/settings', settingsRoutes);
 
+// Mount API routes on both /api/v1 (standard) and / (fallback for non-prefixed client URLs)
 app.use('/api/v1', apiV1);
+app.use('/', apiV1);
 
 // 404 Handler for undefined routes
 app.use('*', (req, res) => {
