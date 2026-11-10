@@ -1,26 +1,28 @@
-/* Sugiyog Luxury Editorial Footer */
+/* =========================================================
+   SUGIYOG DEVOTIONAL FOOTER (Sri Mandir Signature Theme)
+   ========================================================= */
 
 .footer {
-  background: radial-gradient(circle at 50% 0%, #521520 0%, #350c14 100%);
-  color: #FFF9EF;
-  border-top: 2px solid var(--color-secondary);
-  padding-top: var(--space-12);
-  padding-bottom: var(--space-8);
+  background: linear-gradient(180deg, #E38921 0%, #D47514 60%, #BA5F0A 100%);
+  color: #FFFFFF;
+  border-top: 3px solid #FCD34D;
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-6);
   margin-top: auto;
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle background mandala / ornamental motif */
+/* Subtle background ornamental pattern */
 .footer::before {
   content: '';
   position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 500px;
-  height: 500px;
+  top: -120px;
+  right: -120px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
-  border: 1px dashed rgba(196, 154, 69, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
   pointer-events: none;
 }
 
@@ -29,19 +31,22 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
 .footer-ornament-line {
   height: 1px;
-  width: 80px;
-  background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+  width: 90px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
 }
 
 .footer-ornament-symbol {
-  color: var(--color-secondary-light);
+  color: #FFFDF9;
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .footer-container {
@@ -54,27 +59,38 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.6fr;
-  gap: var(--space-10);
-  margin-bottom: var(--space-12);
+  grid-template-columns: 1.6fr 1fr 1fr 1.6fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
 }
 
-.footer-col-brand .navbar-brand {
+.footer-logo {
+  display: inline-flex;
   margin-bottom: var(--space-4);
+  text-decoration: none;
 }
 
-.footer-col-brand .brand-name {
-  color: #FFF9EF;
+.footer-logo .brand-symbol {
+  background: #FFFFFF;
+  border-color: #FCD34D;
 }
 
-.footer-col-brand .brand-subtext {
-  color: var(--color-accent);
+.footer-logo .brand-symbol span {
+  color: #E56910;
+}
+
+.footer-logo .brand-name {
+  color: #FFFFFF;
+}
+
+.footer-logo .brand-subtext {
+  color: #FEF3C7;
 }
 
 .footer-brand-desc {
-  color: rgba(255, 249, 239, 0.75);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.88rem;
-  line-height: 1.75;
+  line-height: 1.7;
   margin-bottom: var(--space-5);
 }
 
@@ -88,25 +104,25 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  color: var(--color-accent);
+  color: #FFFDF9;
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .credential-item svg {
-  color: var(--color-secondary);
+  color: #FCD34D;
   flex-shrink: 0;
 }
 
 .footer-heading {
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.25rem;
-  color: var(--color-secondary-light);
-  margin-bottom: var(--space-5);
-  font-weight: 600;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-4);
   position: relative;
   padding-bottom: var(--space-2);
-  letter-spacing: 0.02em;
 }
 
 .footer-heading::after {
@@ -115,90 +131,89 @@
   bottom: 0;
   left: 0;
   width: 32px;
-  height: 1.5px;
-  background-color: var(--color-secondary);
+  height: 2px;
+  background-color: #FCD34D;
+  border-radius: var(--radius-full);
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0.65rem;
 }
 
 .footer-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
   font-size: 0.88rem;
-  color: rgba(255, 249, 239, 0.7);
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   display: inline-block;
 }
 
 .footer-links a:hover {
-  color: var(--color-secondary-light);
+  color: #FCD34D;
   transform: translateX(4px);
 }
 
 .footer-subtext {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.85rem;
-  color: rgba(255, 249, 239, 0.75);
-  margin-bottom: var(--space-4);
   line-height: 1.6;
+  margin-bottom: var(--space-4);
 }
 
-/* Newsletter Form */
+/* Newsletter in Footer */
 .footer-newsletter-form {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .newsletter-input-wrapper {
   display: flex;
-  position: relative;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  border: 1px solid rgba(196, 154, 69, 0.4);
-  background: rgba(0, 0, 0, 0.25);
-  transition: border-color 0.25s ease;
-}
-
-.newsletter-input-wrapper:focus-within {
-  border-color: var(--color-secondary);
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: var(--radius-full);
+  padding: 4px 6px 4px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .newsletter-input {
-  flex: 1;
-  background: transparent;
   border: none;
-  padding: 0.65rem 0.9rem;
-  color: #FFF9EF;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
+  color: #1F2937;
 }
 
 .newsletter-input::placeholder {
-  color: rgba(255, 249, 239, 0.4);
-}
-
-.newsletter-input:focus {
-  outline: none;
+  color: #9CA3AF;
 }
 
 .newsletter-submit-btn {
-  background-color: var(--color-secondary);
-  color: #1a0e05;
+  background: linear-gradient(135deg, #E56910 0%, #D97706 100%);
+  color: #FFFFFF;
   border: none;
-  padding: 0 1rem;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
 }
 
 .newsletter-submit-btn:hover {
-  background-color: var(--color-secondary-light);
+  background: #C65507;
+  transform: scale(1.06);
 }
 
 .newsletter-success-msg {
-  font-size: 0.8rem;
-  color: var(--color-accent);
+  color: #FCD34D;
+  font-size: 0.82rem;
+  font-weight: 600;
   margin-top: var(--space-2);
 }
 
@@ -206,81 +221,108 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  font-size: 0.82rem;
-  color: rgba(255, 249, 239, 0.7);
+  margin-top: var(--space-4);
 }
 
-.footer-contact-info .contact-row {
+.contact-row {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-2);
+  gap: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
 }
 
-.footer-contact-info .contact-row svg {
-  color: var(--color-secondary);
+.contact-row svg {
+  color: #FCD34D;
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
-.footer-contact-info a {
-  color: rgba(255, 249, 239, 0.85);
-  transition: color 0.2s ease;
+.contact-row a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.footer-contact-info a:hover {
-  color: var(--color-secondary-light);
+.contact-row a:hover {
+  color: #FCD34D;
 }
 
-/* Footer Bottom */
+/* Sacred Shanti Mantra Banner */
+.footer-shanti-banner {
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.footer-shanti-verse {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFDF9;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+.footer-shanti-translation {
+  font-size: 0.8rem;
+  color: #FEF3C7;
+  font-style: italic;
+}
+
+/* Footer Bottom Bar */
 .footer-bottom {
-  border-top: 1px solid rgba(196, 154, 69, 0.2);
-  padding-top: var(--space-6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
-  color: rgba(255, 249, 239, 0.6);
   flex-wrap: wrap;
   gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-legal-links {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .footer-legal-links a {
-  color: rgba(255, 249, 239, 0.6);
-  transition: color 0.2s ease;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .footer-legal-links a:hover {
-  color: var(--color-secondary-light);
+  color: #FCD34D;
+  text-decoration: underline;
 }
 
 .dot-divider {
-  color: var(--color-secondary);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 580px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
-
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-3);
   }
 }

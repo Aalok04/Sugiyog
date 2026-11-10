@@ -6,12 +6,12 @@
 }
 
 .booking-wizard-card {
-  background-color: #FFFDF8;
+  background-color: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-secondary);
+  border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-10);
-  box-shadow: 0 12px 36px rgba(53, 37, 30, 0.08);
+  box-shadow: 0 12px 36px rgba(229, 105, 16, 0.08);
   max-width: 880px;
   margin: 0 auto;
 }
@@ -58,8 +58,8 @@
 .step-indicator-item.active .step-circle {
   background: var(--color-primary);
   border-color: var(--color-secondary);
-  color: #FFF9EF;
-  box-shadow: 0 0 12px rgba(196, 154, 69, 0.35);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(229, 105, 16, 0.35);
   transform: scale(1.1);
 }
 
@@ -225,13 +225,13 @@
 
 .slot-pill.active {
   background-color: var(--color-primary);
-  color: #FFF9EF;
+  color: #FFFFFF;
   border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(112, 31, 45, 0.25);
+  box-shadow: 0 4px 12px rgba(229, 105, 16, 0.25);
 }
 
 .slot-pill.active span {
-  color: #FFF9EF !important;
+  color: #FFFFFF !important;
 }
 
 /* Step 4: Thumbprint Guide & Upload */

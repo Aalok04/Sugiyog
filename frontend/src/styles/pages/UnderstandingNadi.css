@@ -1,60 +1,97 @@
-/* Understanding Nadi Shastra Page Styles */
+/* ==========================================================================
+   SUGIYOG - UNDERSTANDING NADI SHASTRA & 16 KANDAM CARDS UI/UX
+   ========================================================================== */
 
 .nadi-guide-container {
-  max-width: 1040px;
+  max-width: 1140px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-12);
 }
 
-.nadi-story-card {
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8) var(--space-10);
-  box-shadow: var(--shadow-sm);
-}
-
-.nadi-story-card h2 {
-  font-size: 1.8rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-4);
-}
-
-.nadi-story-card p {
-  color: var(--color-text);
-  line-height: 1.75;
-  margin-bottom: var(--space-4);
-}
-
-.nadi-story-card p:last-child {
-  margin-bottom: 0;
-}
-
-/* Sacred Heritage Box */
+/* --------------------------------------------------------------------------
+   1. Sacred Heritage Banner (Sri Mandir Sanctum Style)
+   -------------------------------------------------------------------------- */
 .sacred-heritage-card {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #4a131d 100%);
-  color: var(--color-background);
-  border: 2px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, #E56910 0%, #D97706 50%, #C65507 100%);
+  color: #FFFFFF;
+  border: 2px solid #FCD34D;
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  box-shadow: 0 16px 44px rgba(229, 105, 16, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.sacred-heritage-card::before {
+  content: '✦ ॐ ✦';
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+  pointer-events: none;
 }
 
 .sacred-heritage-card h2 {
-  color: var(--color-secondary-light);
-  font-size: 1.9rem;
-  margin-bottom: var(--space-3);
+  color: #FFFFFF;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  line-height: 1.25;
 }
 
 .sacred-heritage-card p {
-  color: rgba(255, 249, 239, 0.92);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+.sacred-heritage-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. Story Cards (Clean White Elevated Devotional Cards)
+   -------------------------------------------------------------------------- */
+.nadi-story-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-10);
+  box-shadow: 0 8px 30px rgba(229, 105, 16, 0.05);
+  transition: all var(--transition-normal);
+}
+
+.nadi-story-card:hover {
+  box-shadow: 0 12px 36px rgba(229, 105, 16, 0.09);
+}
+
+.nadi-story-card h2 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  color: var(--color-text);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  line-height: 1.25;
+}
+
+.nadi-story-card p {
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
   line-height: 1.75;
   margin-bottom: var(--space-4);
 }
 
-/* Thumbprint Rules Grid */
+/* --------------------------------------------------------------------------
+   3. Thumbprint Science Rules Grid
+   -------------------------------------------------------------------------- */
 .thumbprint-rules-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,155 +100,666 @@
 }
 
 .thumbprint-rule-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: var(--color-background);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: var(--space-6);
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
+  transition: all var(--transition-fast);
+}
+
+.thumbprint-rule-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(229, 105, 16, 0.08);
 }
 
 .thumbprint-rule-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  background: var(--color-surface);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   flex-shrink: 0;
-  border: 1px solid var(--color-secondary);
+  border: 1.5px solid var(--color-primary-subtle);
+  box-shadow: 0 4px 10px rgba(229, 105, 16, 0.15);
 }
 
 .thumbprint-rule-content h3 {
-  font-size: 1.15rem;
-  color: var(--color-primary);
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
   margin-bottom: var(--space-1);
 }
 
 .thumbprint-rule-content p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Yes/No Verification Section */
+/* --------------------------------------------------------------------------
+   4. Index Verification: Yes/No Protocol Box
+   -------------------------------------------------------------------------- */
 .verification-box {
-  background: var(--color-surface);
-  border-left: 4px solid var(--color-secondary);
-  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  border: 1.5px solid var(--color-primary-subtle);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-lg);
   padding: var(--space-6) var(--space-8);
   margin: var(--space-6) 0;
 }
 
-.verification-box h3 {
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-2);
+.verification-box-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
-/* 16 Kandams Detailed Section */
+.verification-badge {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.verification-box h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.verification-box p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-3);
+}
+
+.verification-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   5. THE 16 SACRED KANDAMS: ELEVATED UI/UX CARDS (Sri Mandir Style)
+   ========================================================================== */
+
+/* Filter & Search Toolbar */
+.kandams-toolbar {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+  box-shadow: 0 8px 24px rgba(229, 105, 16, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.kandams-search-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.kandams-search-box {
+  display: flex;
+  align-items: center;
+  background: var(--color-background);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 0.6rem 1.25rem;
+  flex: 1;
+  min-width: 280px;
+  max-width: 540px;
+  transition: all var(--transition-fast);
+}
+
+.kandams-search-box:focus-within {
+  border-color: var(--color-primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(229, 105, 16, 0.15);
+}
+
+.kandams-search-icon {
+  color: var(--color-primary);
+  margin-right: var(--space-2);
+  flex-shrink: 0;
+}
+
+.kandams-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  width: 100%;
+}
+
+.kandams-search-input::placeholder {
+  color: var(--color-text-light);
+}
+
+.kandams-clear-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.kandams-clear-btn:hover {
+  color: var(--color-primary);
+}
+
+.kandams-count-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-subtle);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Category Filter Pills */
+.kandams-categories-row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.category-filter-btn {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.category-filter-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.category-filter-btn.active {
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  border-color: #E56910;
+  box-shadow: 0 4px 12px rgba(229, 105, 16, 0.3);
+}
+
+/* Kandams Cards Grid */
 .kandams-full-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-  margin-top: var(--space-8);
+  gap: var(--space-8);
+  margin-top: var(--space-4);
 }
 
-.kandam-detailed-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-6);
-  transition: all var(--transition-fast);
+/* Elevated Card Container */
+.kandam-card-v2 {
   position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
   display: flex;
   flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(229, 105, 16, 0.05);
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.kandam-detailed-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-secondary);
-  box-shadow: var(--shadow-md);
+/* Top Accent Line */
+.kandam-card-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E56910 0%, #F59E0B 50%, #C65507 100%);
+  opacity: 0.85;
+  transition: opacity var(--transition-fast), height var(--transition-fast);
 }
 
-.kandam-header-row {
+.kandam-card-v2:hover .kandam-card-accent-bar {
+  opacity: 1;
+  height: 5px;
+}
+
+/* Watermark Numeral */
+.kandam-watermark-num {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(229, 105, 16, 0.07);
+  user-select: none;
+  pointer-events: none;
+  transition: color 0.35s ease, transform 0.35s ease;
+  z-index: 0;
+}
+
+.kandam-card-v2:hover .kandam-watermark-num {
+  color: rgba(229, 105, 16, 0.14);
+  transform: scale(1.06) translateY(-2px);
+}
+
+/* Hover Lift & Glow */
+.kandam-card-v2:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 38px rgba(229, 105, 16, 0.14), 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Featured Chapter Border Accent */
+.kandam-card-featured {
+  border-color: #FCD34D;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+  box-shadow: 0 8px 26px rgba(229, 105, 16, 0.09);
+}
+
+/* Top Meta Row */
+.kandam-top-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  position: relative;
+  z-index: 2;
 }
 
-.kandam-number-tag {
-  background: var(--color-surface);
-  color: var(--color-primary);
-  border: 1px solid var(--color-secondary);
-  padding: 0.2rem 0.6rem;
+.kandam-badge-cluster {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.kandam-tag-pill {
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  padding: 0.25rem 0.75rem;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 6px rgba(229, 105, 16, 0.3);
 }
 
-.kandam-tamil-name {
-  font-size: 0.85rem;
-  color: var(--color-secondary-dark);
+.kandam-status-ribbon {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+}
+
+.ribbon-core {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+.ribbon-wealth {
+  background: #E8F8F0;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+}
+
+.ribbon-family {
+  background: #FFF1F2;
+  color: #BE123C;
+  border: 1px solid #FECDD3;
+}
+
+.ribbon-remedies {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.kandam-tamil-script {
+  font-size: 0.82rem;
+  color: var(--color-primary-dark);
   font-style: italic;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.kandam-title {
-  font-size: 1.2rem;
+/* Icon & Title Row */
+.kandam-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+  position: relative;
+  z-index: 2;
+}
+
+.kandam-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-soft);
   color: var(--color-primary);
+  border: 1.5px solid var(--color-primary-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.kandam-card-v2:hover .kandam-icon-box {
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 6px 16px rgba(229, 105, 16, 0.35);
+}
+
+.kandam-title-v2 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.25;
+  margin: 0 0 3px 0;
+  transition: color var(--transition-fast);
+}
+
+.kandam-card-v2:hover .kandam-title-v2 {
+  color: var(--color-primary);
+}
+
+.kandam-category-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+/* Narrative Description */
+.kandam-desc-v2 {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* Key Aspects Tag Cloud */
+.kandam-aspects-section {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  position: relative;
+  z-index: 2;
+}
+
+.kandam-aspects-heading {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary-dark);
   margin-bottom: var(--space-2);
 }
 
-.kandam-description {
-  font-size: 0.9rem;
+.kandam-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.aspect-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.aspect-pill:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.aspect-sparkle {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* Card Action Footer */
+.kandam-card-footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+
+.kandam-consult-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  font-weight: 700;
+}
+
+.kandam-btn-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.kandam-consult-btn:hover .kandam-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Empty Search Results */
+.kandams-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  background: #FFFFFF;
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.empty-state-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4) auto;
+}
+
+.kandams-empty-state h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.kandams-empty-state p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-5);
+}
+
+/* --------------------------------------------------------------------------
+   6. Spiritual Remedies Cards (4 Sacred Modalities)
+   -------------------------------------------------------------------------- */
+.remedies-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.remedy-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.remedy-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(229, 105, 16, 0.08);
+}
+
+.remedy-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--color-primary-subtle);
+}
+
+.remedy-card-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.remedy-card-desc {
+  font-size: 0.85rem;
   color: var(--color-text-muted);
   line-height: 1.6;
-  margin-bottom: var(--space-3);
-  flex-grow: 1;
+  margin: 0;
 }
 
-.kandam-topics {
-  font-size: 0.8rem;
+/* --------------------------------------------------------------------------
+   7. Languages Supported & CTA Banner
+   -------------------------------------------------------------------------- */
+.lang-pills-cluster {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lang-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
   color: var(--color-text);
-  background: var(--color-surface);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(196, 154, 69, 0.2);
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Call to Action Section */
+.lang-pill:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
 .nadi-cta-banner {
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10);
+  background: linear-gradient(135deg, #E56910 0%, #D97706 50%, #C65507 100%);
+  border: 2px solid #FCD34D;
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-8);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-4);
+  color: #FFFFFF;
+  box-shadow: 0 16px 48px rgba(229, 105, 16, 0.35);
+  position: relative;
+  overflow: hidden;
 }
 
 .nadi-cta-banner h2 {
-  font-size: 2rem;
-  color: var(--color-primary);
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: 700;
 }
 
 .nadi-cta-banner p {
-  max-width: 650px;
-  color: var(--color-text-muted);
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.95);
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .cta-actions {
@@ -219,17 +767,57 @@
   gap: var(--space-4);
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
-@media (max-width: 800px) {
-  .thumbprint-rules-grid {
-    grid-template-columns: 1fr;
-  }
+/* --------------------------------------------------------------------------
+   8. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
   .kandams-full-grid {
     grid-template-columns: 1fr;
   }
+
   .nadi-story-card {
     padding: var(--space-6);
+  }
+
+  .thumbprint-rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .kandams-toolbar {
+    padding: var(--space-4);
+  }
+
+  .kandams-search-box {
+    min-width: 100%;
+  }
+
+  .kandam-card-v2 {
+    padding: var(--space-5);
+  }
+
+  .kandam-title-v2 {
+    font-size: 1.25rem;
+  }
+
+  .sacred-heritage-card {
+    padding: var(--space-6);
+  }
+
+  .nadi-cta-banner {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
   }
 }

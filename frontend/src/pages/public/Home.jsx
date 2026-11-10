@@ -19,6 +19,7 @@ import {
   Video,
   HeartHandshake,
   FileText,
+  Star,
 } from 'lucide-react';
 import api from '../../services/api';
 import ServiceCard from '../../components/cards/ServiceCard';
@@ -29,6 +30,7 @@ import TestimonialCarousel from '../../components/testimonials/TestimonialCarous
 import GoldParticles from '../../components/animations/GoldParticles';
 import MandalaOrnament from '../../components/animations/MandalaOrnament';
 import SanatanDhwajaCanvas from '../../components/animations/SanatanDhwajaCanvas';
+import PanchangWidget from '../../components/panchang/PanchangWidget';
 import { FALLBACK_SERVICES, FALLBACK_VISITS, FALLBACK_TESTIMONIALS } from '../../services/fallbackData';
 
 export default function Home() {
@@ -107,8 +109,8 @@ export default function Home() {
         {/* Animated Gold Floating Particles Canvas */}
         <GoldParticles count={38} />
 
-        {/* 3D Waving Sanatan Dhwaja Flag (Behind Sacred Text) */}
-        <SanatanDhwajaCanvas opacity={0.86} windSpeed={1.4} placement="behind-text" />
+        {/* 3D Waving Sanatan Dhwaja Flag (Full Background Silk Cloth) */}
+        <SanatanDhwajaCanvas opacity={1.0} windSpeed={1.25} placement="full-screen" />
 
         {/* Subtle Sacred Rotating Mandala Ornament in Background */}
         <div className="hero-mandala-bg">
@@ -118,44 +120,54 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-layout-grid">
             <div className="hero-text-content">
+              {/* Sri Mandir Style Auspicious Pill Badge */}
+              <div className="hero-editorial-badge">
+                <span className="badge-flag">🚩</span>
+                <span>Maharishi Agasthiyar Tradition • 108 Sacred Classifications</span>
+              </div>
+
               <h1 className="hero-headline">
-                Ancient Wisdom. <span className="gold-accent">Timeless Guidance.</span>
+                Ancient Palm Leaf Wisdom. <span className="saffron-gradient">Your Destiny Revealed.</span>
               </h1>
 
               <p className="hero-supporting-text">
-                Discover the ancient tradition of Nadi Shastra through personal consultations with Swami Ji.
-                Inscribed upon preserved palm leaves (Olai Chuvadi) by Sage Agasthiyar, uncovering your soul’s karmic blueprint,
-                destiny milestones, and sacred remedies.
+                Discover the authentic tradition of Nadi Shastra through personal consultations with Pujya Swami Ji.
+                Inscribed upon original palm leaves (Olai Chuvadi) by Maharishi Agasthiyar, uncovering your soul’s karmic blueprint,
+                destined life milestones, and sanctified remedies.
               </p>
 
               <div className="hero-cta-cluster">
                 <Link to="/book" className="btn btn-luxury btn-lg">
                   <Calendar size={18} />
-                  <span>Book a Consultation</span>
+                  <span>Book Online Consultation</span>
                 </Link>
                 <a href="#nadi-story" className="btn btn-outline-gold btn-lg">
                   <BookOpen size={18} />
-                  <span>Discover Nadi Shastra</span>
+                  <span>Explore 16 Kandams</span>
                 </a>
               </div>
 
               <div className="hero-pillars-row">
                 <div className="hero-pillar-item">
                   <span className="pillar-number">108</span>
-                  <span className="pillar-label">Thumbprint Classifications</span>
+                  <span className="pillar-label">Thumbprint Classes</span>
                 </div>
                 <div className="hero-pillar-item">
                   <span className="pillar-number">16</span>
-                  <span className="pillar-label">Sacred Life Kandams</span>
+                  <span className="pillar-label">Sacred Kandams</span>
+                </div>
+                <div className="hero-pillar-item">
+                  <span className="pillar-number">4.9★</span>
+                  <span className="pillar-label">Devotee Trust Rating</span>
                 </div>
                 <div className="hero-pillar-item">
                   <span className="pillar-number">Global</span>
-                  <span className="pillar-label">Online & City Visits</span>
+                  <span className="pillar-label">Online & City Darshan</span>
                 </div>
               </div>
             </div>
 
-            {/* Visual Portrait Frame with Gold Filigree */}
+            {/* Visual Portrait Frame with Gold Filigree & Sri Mandir Trust Pill */}
             <div className="hero-portrait-container">
               <div className="hero-portrait-gold-frame">
                 <div className="portrait-inner-card">
@@ -166,7 +178,22 @@ export default function Home() {
                   />
                   <div className="portrait-caption-glass">
                     <h4 className="caption-title">Pujya Swami Ji</h4>
-                    <p className="caption-lineage">Swami jii  is a spiritual guru  and a healer </p>
+                    <p className="caption-lineage">Revered Spiritual Master & Nadi Shastra Custodian</p>
+                  </div>
+                </div>
+
+                {/* Floating Verified Devotee Testimonial Card (Sri Mandir Style) */}
+                <div className="portrait-trust-float-badge">
+                  <div className="trust-stars-compact">
+                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
+                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
+                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
+                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
+                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
+                    <span className="trust-score">4.9/5 Rating</span>
+                  </div>
+                  <div className="trust-quote-compact">
+                    "Our family's exact ancestral names were recited!"
                   </div>
                 </div>
               </div>
@@ -174,6 +201,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Sri Mandir Signature Vedic Panchang & Shubh Muhurat Widget */}
+      <PanchangWidget />
 
       {/* 2. Nadi Shastra Introduction & Storytelling */}
       <section id="nadi-story" className="story-section">
@@ -554,7 +584,7 @@ export default function Home() {
                     aria-expanded={isOpen}
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp size={20} color="var(--color-secondary)" /> : <ChevronDown size={20} color="var(--color-secondary)" />}
+                    {isOpen ? <ChevronUp size={20} color="var(--color-primary)" /> : <ChevronDown size={20} color="var(--color-primary)" />}
                   </button>
                   {isOpen && (
                     <div className="faq-answer-panel">

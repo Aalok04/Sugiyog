@@ -1,34 +1,54 @@
 :root {
-  /* Brand Heritage Palette */
-  --color-primary: #701F2D;       /* Deep Royal Maroon */
-  --color-primary-dark: #521520;
-  --color-primary-light: #8E2B3C;
-  --color-secondary: #C49A45;     /* Sacred Gold */
-  --color-secondary-dark: #9F7929;
-  --color-secondary-light: #D9B365;
-  --color-background: #FFF9EF;    /* Warm Sandalwood / Cream */
-  --color-surface: #F4E8D4;       /* Soft Parchment */
-  --color-surface-hover: #ECE0CA;
-  --color-surface-card: #FAF4E9;
-  --color-text: #35251E;          /* Dark Earth Brown */
-  --color-text-muted: #6B574C;
-  --color-text-light: #8C7669;
-  --color-accent: #E3CC9A;        /* Warm Ochre / Muted Gold */
-  --color-border: #E8D9C0;
-  --color-border-focus: #C49A45;
+  /* Sri Mandir Inspired Sacred Saffron & Marigold Palette */
+  --color-primary: #E56910;              /* Sri Mandir Signature Saffron / Marigold */
+  --color-primary-dark: #C65507;         /* Deep Roasted Saffron / Terracotta */
+  --color-primary-light: #F77E2A;        /* Radiant Bhagwa */
+  --color-primary-soft: #FFF4EB;         /* Soft warm saffron tint for badges & pills */
+  --color-primary-subtle: #FEEBDC;       /* Subtle saffron border/highlight */
+  --color-primary-gradient: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+
+  /* Secondary Accents: Temple Gold & Sacred Vermilion */
+  --color-secondary: #F59E0B;            /* Auspicious Temple Gold / Amber */
+  --color-secondary-dark: #D97706;        /* Deep Marigold Ochre */
+  --color-secondary-light: #FCD34D;       /* Radiant Diya Gold */
+  --color-maroon: #7A1F2D;               /* Royal Sandalwood Maroon (Traditional Heritage) */
+  --color-vermilion: #D63929;            /* Sacred Kumkum / Sindoor */
+
+  /* Backgrounds & Clean Devotional Surfaces (Sri Mandir Crisp Warm Ivory) */
+  --color-background: #FFFDF9;           /* Pure Sandalwood Divine Ivory */
+  --color-surface: #FFF7ED;              /* Warm Saffron-Tinted Parchment */
+  --color-surface-hover: #FFEDD5;
+  --color-surface-card: #FFFFFF;         /* Crisp Elevated White Card */
+  --color-surface-card-hover: #FFFFFF;
+  --color-surface-accent: #FEF3C7;       /* Soft Golden Shubh Tint */
+
+  /* Typography: High-Contrast Modern Devotional Text */
+  --color-text: #1F2937;                 /* Deep Charcoal Slate (Crisp Legibility) */
+  --color-text-muted: #4B5563;           /* Balanced Slate Gray */
+  --color-text-light: #6B7280;
+  --color-accent: #F59E0B;               /* Golden Amber */
+  
+  /* Borders & Dividers */
+  --color-border: #F0E3D6;               /* Delicate Warm Border */
+  --color-border-light: #F9F3EC;
+  --color-border-focus: #E56910;
   --color-white: #FFFFFF;
 
-  /* Status Colors */
-  --color-success: #2E7D32;
-  --color-success-bg: #E8F5E9;
+  /* Sri Mandir Signature Colors */
+  --color-srimandir-orange: #E38921;     /* Sri Mandir Iconic Orange */
+  --color-srimandir-footer: #E38921;     /* Sri Mandir Signature Footer Hue */
+
+  /* Status & Devotional Indicators */
+  --color-success: #00BD68;              /* Sri Mandir Auspicious Green */
+  --color-success-bg: #E6F8F0;
   --color-warning: #ED6C02;
   --color-warning-bg: #FFF3E0;
-  --color-danger: #C62828;
-  --color-danger-bg: #FFEBEE;
+  --color-danger: #D63929;
+  --color-danger-bg: #FEF2F2;
   --color-info: #0288D1;
   --color-info-bg: #E1F5FE;
 
-  /* Typography */
+  /* Typography Fonts */
   --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
   --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -62,14 +82,18 @@
   --header-height: 80px;
   --sidebar-width: 270px;
 
-  /* Transitions & Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  /* Sri Mandir Mobile-First Rounded Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
   --radius-full: 9999px;
-  --shadow-sm: 0 1px 3px rgba(53, 37, 30, 0.08);
-  --shadow-md: 0 4px 12px rgba(53, 37, 30, 0.08);
-  --shadow-lg: 0 10px 24px rgba(53, 37, 30, 0.12);
+
+  /* Sri Mandir Warm Ambient Shadows */
+  --shadow-sm: 0 1px 3px rgba(229, 105, 16, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(229, 105, 16, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 28px rgba(229, 105, 16, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 24px rgba(229, 105, 16, 0.28);
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
 }

@@ -1,25 +1,26 @@
-/* Sugiyog Luxury Button Styling */
+/* Sugiyog Devotional & Modern Button Styling (Sri Mandir Style) */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0.8rem 1.6rem;
+  padding: 0.75rem 1.6rem;
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: 600;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   text-decoration: none;
   transition: all var(--transition-normal);
   cursor: pointer;
   border: 1px solid transparent;
   line-height: 1.25;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
+  box-sizing: border-box;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-secondary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
@@ -29,52 +30,70 @@
   pointer-events: none;
 }
 
-/* Primary Button - Royal Burgundy */
+/* Primary Button - Sri Mandir Radiant Saffron */
 .btn-primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
   color: var(--color-white);
-  border-color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(112, 31, 45, 0.2);
+  border-color: #E56910;
+  box-shadow: 0 4px 14px rgba(229, 105, 16, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  box-shadow: 0 6px 18px rgba(112, 31, 45, 0.35);
+  background: linear-gradient(135deg, #C65507 0%, #D97706 100%);
+  border-color: #C65507;
+  box-shadow: 0 6px 20px rgba(229, 105, 16, 0.45);
   transform: translateY(-2px);
+  color: var(--color-white);
 }
 
-/* Secondary / Sacred Gold Button */
+/* Secondary Button - Auspicious Golden Amber */
 .btn-secondary {
   background-color: var(--color-secondary);
   color: #1a0e05;
   border-color: var(--color-secondary);
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(196, 154, 69, 0.25);
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-light);
   border-color: var(--color-secondary-light);
-  box-shadow: 0 6px 20px rgba(196, 154, 69, 0.4);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
   transform: translateY(-2px);
 }
 
-/* Luxury Shimmer Button */
+/* Luxury Sri Mandir Puja Action Button */
 .btn-luxury {
-  background: linear-gradient(135deg, #701F2D 0%, #521520 100%);
-  color: var(--color-accent);
-  border: 1px solid var(--color-secondary);
+  background: linear-gradient(135deg, #E56910 0%, #FF8A3D 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(82, 21, 32, 0.35);
+  box-shadow: 0 4px 16px rgba(229, 105, 16, 0.4);
+  font-weight: 700;
+}
+
+.btn-luxury::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-25deg);
+  transition: 0.6s;
+}
+
+.btn-luxury:hover::after {
+  left: 150%;
 }
 
 .btn-luxury:hover {
-  color: var(--color-white);
-  border-color: var(--color-secondary-light);
+  background: linear-gradient(135deg, #C65507 0%, #E56910 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(82, 21, 32, 0.45);
+  box-shadow: 0 6px 22px rgba(229, 105, 16, 0.55);
+  color: #FFFFFF;
 }
 
 /* Outline Button */
@@ -82,49 +101,63 @@
   background-color: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
+  background-color: var(--color-white);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
   color: var(--color-white);
+  border-color: transparent;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(229, 105, 16, 0.25);
 }
 
+/* Outline Gold Button (For Hero and Dark/Warm Surfaces) */
 .btn-outline-gold {
-  background-color: transparent;
-  color: var(--color-secondary-light);
-  border-color: var(--color-secondary);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFDF9;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
 }
 
 .btn-outline-gold:hover {
-  background-color: var(--color-secondary);
-  color: #1a0e05;
-  transform: translateY(-2px);
-}
-
-/* Text Button */
-.btn-text {
-  background: transparent;
-  color: var(--color-primary);
-  padding: 0.5rem 0.75rem;
-}
-
-.btn-text:hover {
+  background-color: #FFFFFF;
   color: var(--color-primary-dark);
-  text-decoration: underline;
+  border-color: #FFFFFF;
+  text-shadow: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* WhatsApp Brand Button */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-color: #25D366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+  background-color: #1EBE5D;
+  border-color: #1EBE5D;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: #FFFFFF;
 }
 
 /* Sizes */
 .btn-sm {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.1rem;
   font-size: var(--text-xs);
-  border-radius: var(--radius-sm);
 }
 
 .btn-lg {
-  padding: 1rem 2.2rem;
+  padding: 0.95rem 2.2rem;
   font-size: var(--text-base);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .btn-block {

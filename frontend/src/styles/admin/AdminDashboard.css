@@ -180,7 +180,7 @@
 
 .btn-icon:hover {
   background: var(--color-primary);
-  color: #FFF9EF;
+  color: #FFFFFF;
 }
 
 @media (max-width: 1300px) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Calendar, MessageCircle, ChevronRight } from 'lucide-react';
+import { Menu, X, Calendar, MessageCircle, ChevronRight, PhoneCall, Sparkles } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,17 +63,41 @@ export default function Navbar() {
     { to: '/services', label: 'Consultations' },
     { to: '/upcoming-visits', label: 'Global Tours' },
     { to: '/testimonials', label: 'Experiences' },
-    { to: '/events', label: 'Spiritual Events' },
-    { to: '/gallery', label: 'Event Gallery' },
+    { to: '/events', label: 'Events' },
+    { to: '/gallery', label: 'Gallery' },
     { to: '/faq', label: 'FAQs' },
     { to: '/contact', label: 'Contact' },
   ];
 
   return (
     <>
+      {/* Top Auspicious Ribbon (Sri Mandir Style) */}
+      <div className="navbar-top-ribbon">
+        <div className="navbar-top-container">
+          <div className="top-ribbon-left">
+            <span className="top-ribbon-badge">🚩 ॐ नमः शिवाय</span>
+            <span className="top-ribbon-text">
+              Certified Ancient Nadi Shastra Platform • 108 Sacred Classifications
+            </span>
+          </div>
+          <div className="top-ribbon-right">
+            <a
+              href="tel:+919876543210"
+              className="top-ribbon-link"
+              title="Call Devotee Helpline"
+            >
+              <PhoneCall size={12} />
+              <span>Helpline: +91 98765 43210</span>
+            </a>
+            <span className="top-ribbon-sep">•</span>
+            <span className="top-ribbon-hours">Daily 09:00 AM - 08:00 PM IST</span>
+          </div>
+        </div>
+      </div>
+
       <header className={`navbar ${isTransparent ? 'navbar-transparent' : 'navbar-scrolled'}`}>
         <div className="navbar-container">
-          {/* Brand Logo */}
+          {/* Brand Logo - Sri Mandir Inspired Saffron Emblem */}
           <Link to="/" className="navbar-brand" onClick={closeMobileMenu}>
             <div className="brand-symbol">
               <span>सु</span>
@@ -84,7 +108,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Links (Hidden on <= 1250px) */}
+          {/* Desktop Links */}
           <nav className="navbar-links" aria-label="Main Navigation">
             <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} end>
               Home
@@ -180,6 +204,15 @@ export default function Navbar() {
                 >
                   <X size={20} />
                 </button>
+              </div>
+
+              {/* Drawer Helpline Bar */}
+              <div className="drawer-helpline-box">
+                <span className="helpline-title">Devotee Support & Inquiries</span>
+                <a href="tel:+919876543210" className="helpline-number">
+                  <PhoneCall size={14} />
+                  <span>+91 98765 43210</span>
+                </a>
               </div>
 
               {/* Drawer Links List */}

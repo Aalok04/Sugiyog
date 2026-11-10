@@ -6,14 +6,14 @@
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--color-background, #FFF9EF);
+  background-color: var(--color-background, #FFFDF9);
   position: relative;
 }
 
 .admin-sidebar {
   width: var(--sidebar-width);
-  background: radial-gradient(circle at 10% 20%, #48121D 0%, #25070D 100%);
-  color: #FFF9EF;
+  background: radial-gradient(circle at 10% 20%, #2B1204 0%, #150802 100%);
+  color: #FFFDF9;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -22,7 +22,7 @@
   left: 0;
   z-index: 100;
   overflow-y: auto;
-  border-right: 1px solid rgba(196, 154, 69, 0.3);
+  border-right: 1px solid rgba(229, 105, 16, 0.25);
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 }
 

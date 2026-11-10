@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Sparkles, Send, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { Mail, Phone, MapPin, Sparkles, Send, ShieldCheck, HeartHandshake, PhoneCall, CheckCircle2 } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,11 +17,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer">
-      {/* Decorative Gold Header Border */}
+    <footer className="footer" id="footer">
+      {/* Decorative Auspicious Header Ribbon */}
       <div className="footer-top-ornament">
         <div className="footer-ornament-line"></div>
-        <div className="footer-ornament-symbol">ॐ</div>
+        <div className="footer-ornament-symbol">✦ ॐ नमः शिवाय ✦</div>
         <div className="footer-ornament-line"></div>
       </div>
 
@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand & Lineage Narrative */}
           <div className="footer-col footer-col-brand">
-            <Link to="/" className="navbar-brand">
+            <Link to="/" className="navbar-brand footer-logo">
               <div className="brand-symbol">
                 <span>सु</span>
               </div>
@@ -39,28 +39,32 @@ export default function Footer() {
               </div>
             </Link>
             <p className="footer-brand-desc">
-              Dedicated to preserving and illuminating the sacred palm leaf manuscripts (Olai Chuvadi)
-              inscribed by Sage Agasthiyar and the Sapta Rishis. Guided by Pujya Swami Ji, connecting
-              seekers across the globe with genuine karmic clarity and compassionate Vedic wisdom.
+              Sugiyog brings ancient Vedic Nadi Shastra to seekers worldwide.
+              Preserving original palm leaves (Olai Chuvadi) inscribed by Maharishi Agasthiyar,
+              Pujya Swami Ji provides genuine karmic insights, live video readings, and sanctified remedies.
             </p>
             <div className="footer-credentials">
               <div className="credential-item">
+                <CheckCircle2 size={16} />
+                <span>100% Authentic Vaitheeswaran Koil Manuscripts</span>
+              </div>
+              <div className="credential-item">
                 <ShieldCheck size={16} />
-                <span>Vaitheeswaran Koil Generational Lineage</span>
+                <span>Confidential & Revered Vedic Secretariat</span>
               </div>
               <div className="credential-item">
                 <Sparkles size={16} />
-                <span>100% Confidential & Sacred Discourses</span>
+                <span>Over 100,000+ Destinies Inscribed & Guided</span>
               </div>
             </div>
           </div>
 
           {/* Sacred Consultations */}
           <div className="footer-col">
-            <h4 className="footer-heading">Consultations</h4>
+            <h4 className="footer-heading">Devotional Services</h4>
             <div className="footer-links">
-              <Link to="/book">Book an Appointment</Link>
-              <Link to="/services">All 6 Consultation Formats</Link>
+              <Link to="/book">Book Nadi Consultation</Link>
+              <Link to="/services">All Consultation Formats</Link>
               <Link to="/services/online-nadi-reading">Online Video Reading</Link>
               <Link to="/services/palm-leaf-identification">Thumbprint Identification</Link>
               <Link to="/services/spiritual-remedies">Shanti & Pariharam Remedies</Link>
@@ -74,20 +78,20 @@ export default function Footer() {
             <div className="footer-links">
               <Link to="/about">About Pujya Swami Ji</Link>
               <Link to="/nadi-shastra">Understanding Nadi Shastra</Link>
-              <Link to="/nadi-shastra#kandams">The 16 Sacred Kandams</Link>
-              <Link to="/testimonials">Seeker Testimonials & Video</Link>
+              <Link to="/nadi-shastra#kandams">16 Sacred Life Chapters</Link>
+              <Link to="/testimonials">Devotee Testimonials</Link>
               <Link to="/events">Discourses & Events</Link>
-              <Link to="/gallery">Event Gallery</Link>
-              <Link to="/faq">Seeker FAQ</Link>
-              <Link to="/admin/login">Admin Secretariat Portal</Link>
+              <Link to="/gallery">Darshan Gallery</Link>
+              <Link to="/faq">Seeker FAQs</Link>
+              <Link to="/admin/login">Admin Secretariat</Link>
             </div>
           </div>
 
           {/* Darshan Alerts & Secretariat */}
           <div className="footer-col footer-col-newsletter">
-            <h4 className="footer-heading">Global Darshan Updates</h4>
+            <h4 className="footer-heading">Global Secretariat & Darshan</h4>
             <p className="footer-subtext">
-              Subscribe to receive notifications when Swami Ji announces spiritual visits and consultation tours in your country.
+              Receive updates on Swami Ji’s worldwide city visits, auspicious festivals, and Nadi reading slots.
             </p>
 
             <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
@@ -121,16 +125,26 @@ export default function Footer() {
                 <a href="mailto:contact@sugiyog.org">contact@sugiyog.org</a>
               </div>
               <div className="contact-row">
-                <Phone size={16} />
-                <span>+91 11 2345 6789 / +91 98765 43210</span>
+                <PhoneCall size={16} />
+                <span>+91 98765 43210 (Toll-Free Devotee Helpline)</span>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Sacred Shanti Blessing Banner */}
+        <div className="footer-shanti-banner">
+          <p className="footer-shanti-verse">
+            ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥
+          </p>
+          <span className="footer-shanti-translation">
+            May all beings be happy and peaceful. May all be free from illness and suffering.
+          </span>
+        </div>
+
         {/* Footer Bottom Bar */}
         <div className="footer-bottom">
-          <p>© {currentYear} SUGIYOG. Ancient Nadi Shastra Heritage Foundation. All sacred rights reserved.</p>
+          <p>© {currentYear} SUGIYOG • Ancient Nadi Shastra Heritage Foundation. All sacred rights reserved.</p>
           <div className="footer-legal-links">
             <Link to="/privacy">Privacy Policy</Link>
             <span className="dot-divider">•</span>

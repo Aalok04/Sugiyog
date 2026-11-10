@@ -1,4 +1,6 @@
-/* Sugiyog Luxury Consultation Format Cards - Compact & Dynamic */
+/* =========================================================
+   SUGIYOG CONSULTATION FORMAT CARDS (Sri Mandir Style)
+   ========================================================= */
 
 .format-cards-grid {
   display: grid;
@@ -9,9 +11,9 @@
 
 .format-card {
   position: relative;
-  background: var(--color-surface-card, #FFFFFF);
-  border: 1px solid rgba(196, 154, 69, 0.28);
-  border-radius: var(--radius-xl, 16px);
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
@@ -19,12 +21,12 @@
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.35s ease,
               border-color 0.35s ease;
-  box-shadow: 0 4px 18px rgba(112, 31, 45, 0.05);
+  box-shadow: 0 4px 16px rgba(229, 105, 16, 0.05);
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Light sweep shimmer dynamic effect on hover */
+/* Light sweep shimmer on hover */
 .format-card::before {
   content: '';
   position: absolute;
@@ -35,7 +37,7 @@
   background: linear-gradient(
     105deg,
     transparent 20%,
-    rgba(196, 154, 69, 0.14) 50%,
+    rgba(229, 105, 16, 0.08) 50%,
     transparent 80%
   );
   transform: skewX(-20deg);
@@ -50,34 +52,34 @@
 }
 
 .format-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--color-secondary, #C49A45);
-  box-shadow: 0 16px 36px rgba(112, 31, 45, 0.12), 0 0 24px rgba(196, 154, 69, 0.2);
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 36px rgba(229, 105, 16, 0.12), 0 0 20px rgba(245, 158, 11, 0.15);
 }
 
 /* Featured / Most requested highlight */
 .format-card-featured {
-  border: 1.5px solid var(--color-secondary, #C49A45);
-  background: linear-gradient(180deg, #FFFCF7 0%, #FBF5E8 100%);
-  box-shadow: 0 6px 24px rgba(196, 154, 69, 0.15);
+  border: 2px solid var(--color-primary);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+  box-shadow: 0 8px 28px rgba(229, 105, 16, 0.14);
 }
 
 .format-popular-ribbon {
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(135deg, var(--color-secondary, #C49A45) 0%, var(--color-secondary-dark, #9E7422) 100%);
-  color: #1a0e05;
-  font-size: 0.68rem;
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.32rem 0.85rem;
-  border-bottom-left-radius: var(--radius-md, 8px);
+  padding: 0.35rem 0.95rem;
+  border-bottom-left-radius: var(--radius-md);
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(229, 105, 16, 0.25);
   z-index: 2;
 }
 
@@ -92,56 +94,59 @@
 }
 
 .format-icon-badge {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #4A121D 0%, #701F2D 100%);
-  color: var(--color-secondary, #C49A45);
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(196, 154, 69, 0.4);
-  box-shadow: 0 4px 12px rgba(112, 31, 45, 0.18);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   flex-shrink: 0;
+  transition: all var(--transition-fast);
 }
 
 .format-card:hover .format-icon-badge {
-  transform: scale(1.1) rotate(4deg);
-  box-shadow: 0 6px 18px rgba(196, 154, 69, 0.4);
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  transform: scale(1.05);
 }
 
 .format-header-meta {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
-  text-align: right;
-  max-width: 60%;
+  gap: 5px;
 }
 
 .format-tagline-badge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--color-secondary-dark, #9E7422);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-primary-subtle);
 }
 
 .format-duration-pill {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.72rem;
-  color: var(--color-text-muted, #7A6960);
-  background: rgba(112, 31, 45, 0.05);
-  padding: 0.18rem 0.55rem;
-  border-radius: 999px;
-  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
 }
 
-/* Card Body */
+.format-duration-pill svg {
+  color: var(--color-primary);
+}
+
+/* Body Content */
 .format-card-body {
   display: flex;
   flex-direction: column;
@@ -150,80 +155,53 @@
 
 .format-card-title {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.35rem;
-  line-height: 1.25;
-  color: var(--color-primary, #701F2D);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text);
   margin-bottom: var(--space-2);
-  transition: color 0.2s ease;
-}
-
-.format-card:hover .format-card-title {
-  color: #521520;
+  line-height: 1.25;
 }
 
 .format-card-desc {
-  font-size: 0.85rem;
-  color: var(--color-text-muted, #66554B);
-  line-height: 1.45;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
   margin-bottom: var(--space-4);
-  min-height: 2.6em;
+  flex-grow: 1;
 }
 
-/* Benefits Checklist */
 .format-benefits-list {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-bottom: var(--space-5);
+  gap: 0.6rem;
+  margin-bottom: var(--space-6);
   padding-top: var(--space-3);
-  border-top: 1px dashed rgba(196, 154, 69, 0.35);
+  border-top: 1px solid var(--color-border);
 }
 
 .format-benefit-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-size: 0.82rem;
-  color: var(--color-text, #2D231E);
-  line-height: 1.35;
+  color: var(--color-text);
+  line-height: 1.45;
 }
 
 .format-benefit-icon {
-  color: var(--color-secondary, #C49A45);
+  color: var(--color-success);
   flex-shrink: 0;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+  margin-top: 1px;
 }
 
-.format-card:hover .format-benefit-icon {
-  transform: scale(1.15);
-  color: #8C6417;
-}
-
-/* Footer & Button Interaction */
 .format-card-footer {
   margin-top: auto;
-  padding-top: var(--space-2);
 }
 
 .format-btn-arrow {
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform var(--transition-fast);
 }
 
-.format-card:hover .format-btn-arrow {
+.format-card .btn:hover .format-btn-arrow {
   transform: translateX(4px);
-}
-
-@media (max-width: 768px) {
-  .format-cards-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
-  .format-card {
-    padding: var(--space-5);
-  }
-
-  .format-card-title {
-    font-size: 1.25rem;
-  }
 }

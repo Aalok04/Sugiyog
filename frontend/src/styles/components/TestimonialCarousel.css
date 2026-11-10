@@ -1,13 +1,15 @@
-/* Sugiyog Luxury Testimonial Carousel Styles */
+/* =========================================================
+   SUGIYOG TESTIMONIAL CAROUSEL (Sri Mandir Reviews Style)
+   ========================================================= */
 
 .testimonial-carousel-container {
   position: relative;
-  background: radial-gradient(circle at 50% 20%, #FAF4E9 0%, #F4E8D4 100%);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-12) var(--space-10) var(--space-8) var(--space-10);
-  box-shadow: 0 8px 30px rgba(53, 37, 30, 0.08);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8) var(--space-8) var(--space-8);
+  box-shadow: 0 10px 32px rgba(229, 105, 16, 0.08);
   max-width: 900px;
   margin: 0 auto;
   overflow: hidden;
@@ -15,10 +17,10 @@
 
 .carousel-ornament-quote {
   position: absolute;
-  top: 20px;
-  right: 28px;
-  color: var(--color-secondary);
-  opacity: 0.15;
+  top: 18px;
+  right: 24px;
+  color: var(--color-primary);
+  opacity: 0.12;
   pointer-events: none;
 }
 
@@ -33,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   flex-wrap: wrap;
 }
 
@@ -42,33 +44,33 @@
   align-items: center;
   gap: 5px;
   margin-left: var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid var(--color-secondary);
-  color: var(--color-secondary-dark);
+  background: var(--color-success-bg);
+  border: 1px solid rgba(0, 189, 104, 0.3);
+  color: var(--color-success);
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 .testimonial-quote-text {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
   font-style: italic;
   line-height: 1.65;
-  color: var(--color-primary);
-  margin-bottom: var(--space-8);
-  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  font-weight: 600;
 }
 
 .testimonial-author-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(196, 154, 69, 0.3);
-  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
   margin-bottom: var(--space-6);
   flex-wrap: wrap;
   gap: var(--space-4);
@@ -77,7 +79,7 @@
 .author-name {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-size: 1.3rem;
-  color: var(--color-primary);
+  color: var(--color-text);
   font-weight: 700;
   margin-bottom: 2px;
 }
@@ -92,31 +94,38 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--color-primary);
-  color: #FFF9EF;
-  border: 1px solid var(--color-secondary);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary-subtle);
   border-radius: var(--radius-full);
   padding: 0.45rem 1rem;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .video-watch-btn:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-primary);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(112, 31, 45, 0.25);
+  box-shadow: 0 4px 12px rgba(229, 105, 16, 0.3);
 }
 
 .play-circle {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--color-secondary);
+  background: var(--color-primary);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.video-watch-btn:hover .play-circle {
+  background: #FFFFFF;
+  color: var(--color-primary);
 }
 
 /* Controls Bar */
@@ -129,24 +138,26 @@
 }
 
 .carousel-nav-btn {
-  background: var(--color-surface);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   color: var(--color-primary);
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .carousel-nav-btn:hover {
   background: var(--color-primary);
-  color: #FFF9EF;
+  color: #FFFFFF;
   border-color: var(--color-primary);
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(229, 105, 16, 0.3);
 }
 
 .carousel-dots-list {
@@ -159,7 +170,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1px solid var(--color-secondary);
+  border: 1.5px solid var(--color-primary);
   background: transparent;
   cursor: pointer;
   padding: 0;
@@ -169,14 +180,14 @@
 .carousel-dot.active {
   width: 28px;
   border-radius: var(--radius-full);
-  background: var(--color-secondary);
+  background: var(--color-primary);
 }
 
 /* Video Modal */
 .video-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(30, 8, 12, 0.85);
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   z-index: 3000;
   display: flex;
@@ -187,13 +198,13 @@
 }
 
 .video-modal-dialog {
-  background: #2A0910;
-  border: 2px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-xl);
   width: 100%;
   max-width: 640px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
 }
 
 .video-modal-header {
@@ -201,23 +212,24 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-4) var(--space-6);
-  border-bottom: 1px solid rgba(196, 154, 69, 0.3);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-primary-soft);
 }
 
 .video-modal-close {
   background: none;
   border: none;
-  color: var(--color-accent);
+  color: var(--color-text);
   cursor: pointer;
   padding: var(--space-1);
 }
 
 .video-modal-close:hover {
-  color: #FFF9EF;
+  color: var(--color-primary);
 }
 
 .video-embed-box {
-  background: #190509;
+  background: #111827;
   min-height: 280px;
   display: flex;
   align-items: center;

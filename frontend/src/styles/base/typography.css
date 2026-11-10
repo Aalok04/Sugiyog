@@ -1,47 +1,47 @@
-/* Sugiyog Luxury Typography & Editorial Styling */
+/* Sugiyog Typography & Devotional Editorial Styling */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  color: var(--color-primary);
-  font-weight: 600;
-  line-height: 1.2;
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.25;
   letter-spacing: -0.015em;
 }
 
 h1 {
-  font-size: clamp(2.4rem, 4.5vw + 1rem, 4.2rem);
-  font-weight: 600;
+  font-size: clamp(2.3rem, 4.2vw + 1rem, 3.8rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3vw + 0.8rem, 2.85rem);
-  font-weight: 600;
+  font-size: clamp(1.75rem, 2.8vw + 0.8rem, 2.6rem);
+  font-weight: 700;
 }
 
 h3 {
-  font-size: clamp(1.4rem, 2vw + 0.5rem, 2rem);
+  font-size: clamp(1.35rem, 1.8vw + 0.5rem, 1.85rem);
   font-weight: 600;
 }
 
 h4 {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 600;
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
 }
 
 h6 {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 p {
   margin-bottom: var(--space-4);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   font-size: var(--text-base);
   line-height: 1.7;
 }
@@ -54,8 +54,13 @@ p {
   color: var(--color-secondary);
 }
 
-.text-maroon {
+.text-primary,
+.text-saffron {
   color: var(--color-primary);
+}
+
+.text-maroon {
+  color: var(--color-maroon);
 }
 
 .font-serif {
@@ -72,10 +77,14 @@ p {
   gap: var(--space-2);
   font-family: var(--font-sans);
   text-transform: uppercase;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
-  color: var(--color-secondary-dark);
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-subtle);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
   margin-bottom: var(--space-3);
 }
 
@@ -88,12 +97,16 @@ p {
 .editorial-quote {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-style: italic;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   line-height: 1.6;
-  color: var(--color-primary);
-  border-left: 2px solid var(--color-secondary);
+  color: var(--color-primary-dark);
+  border-left: 3px solid var(--color-primary);
   padding-left: var(--space-6);
   margin: var(--space-6) 0;
+  background: var(--color-primary-soft);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 /* Sacred Indian Ornamental Flourishes */
@@ -102,32 +115,20 @@ p {
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  margin: var(--space-4) auto;
-  color: var(--color-secondary);
-  opacity: 0.85;
-}
-
-.gold-flourish::before,
-.gold-flourish::after {
-  content: '';
-  height: 1px;
-  width: 60px;
-  background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+  color: var(--color-primary);
+  margin: var(--space-2) 0;
 }
 
 .gold-flourish-symbol {
-  font-size: 1.1rem;
-  color: var(--color-secondary);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
-/* Reduced Motion for Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Saffron Gradient Text Highlight */
+.saffron-gradient {
+  background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }

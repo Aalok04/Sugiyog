@@ -1,12 +1,12 @@
 /* Sugiyog Luxury Interactive Global Travel Map Styles */
 
 .global-map-component {
-  background: radial-gradient(circle at 50% 30%, #3d0c15 0%, #1e050a 100%);
-  border: 1px solid var(--color-secondary);
+  background: radial-gradient(circle at 50% 30%, #2A1204 0%, #170902 100%);
+  border: 1px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  box-shadow: 0 12px 36px rgba(30, 5, 10, 0.35);
-  color: #FFF9EF;
+  box-shadow: 0 12px 36px rgba(229, 105, 16, 0.15);
+  color: #FFFDF9;
   position: relative;
   overflow: hidden;
 }
