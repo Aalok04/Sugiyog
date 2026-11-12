@@ -23,6 +23,7 @@ import {
   DollarSign,
 } from 'lucide-react';
 import api from '../../services/api';
+import { FALLBACK_SERVICES, FALLBACK_VISITS } from '../../services/fallbackData';
 
 const STEPS = [
   { id: 1, title: 'Consultation Format' },
@@ -42,10 +43,16 @@ export default function BookConsultation() {
   const [format, setFormat] = useState(initialFormat); // 'ONLINE' or 'IN_PERSON'
   const [bookingMode, setBookingMode] = useState('INSTANT'); // 'INSTANT' or 'REQUEST_BASED'
 
-  const [services, setServices] = useState([]);
-  const [selectedServiceId, setSelectedServiceId] = useState('');
-  const [visits, setVisits] = useState([]);
-  const [selectedVisitId, setSelectedVisitId] = useState(initialVisitId || '');
+  const [services, setServices] = useState(FALLBACK_SERVICES);
+  const [selectedServiceId, setSelectedServiceId] = useState(() => {
+    if (initialServiceSlug) {
+      const match = FALLBACK_SERVICES.find((s) => s.slug === initialServiceSlug);
+      if (match) return match.id;
+    }
+    return FALLBACK_SERVICES[0]?.id || '';
+  });
+  const [visits, setVisits] = useState(FALLBACK_VISITS);
+  const [selectedVisitId, setSelectedVisitId] = useState(initialVisitId || (FALLBACK_VISITS[0]?.id || ''));
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedSlotId, setSelectedSlotId] = useState('');
 
@@ -100,19 +107,19 @@ export default function BookConsultation() {
   // 1. Fetch Services & Published Visits
   useEffect(() => {
     Promise.all([
-      api.get('/services').catch(() => ({ data: [] })),
-      api.get('/travel-visits').catch(() => ({ data: [] })),
+      api.get('/services').catch(() => ({ success: false, data: [] })),
+      api.get('/travel-visits').catch(() => ({ success: false, data: [] })),
     ]).then(([sRes, vRes]) => {
-      if (sRes.success && sRes.data) {
+      if (sRes?.success && Array.isArray(sRes.data) && sRes.data.length > 0) {
         setServices(sRes.data);
         if (initialServiceSlug) {
           const match = sRes.data.find((s) => s.slug === initialServiceSlug);
           if (match) setSelectedServiceId(match.id);
-        } else if (sRes.data.length > 0) {
+        } else if (!selectedServiceId) {
           setSelectedServiceId(sRes.data[0].id);
         }
       }
-      if (vRes.success && vRes.data) {
+      if (vRes?.success && Array.isArray(vRes.data) && vRes.data.length > 0) {
         setVisits(vRes.data);
       }
     });
@@ -341,8 +348,8 @@ export default function BookConsultation() {
 
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--space-3)', paddingTop: 'var(--space-3)', borderTop: '1px dashed var(--color-border)' }}>
                 <span className="review-label">Consultation Dakshina:</span>
-                <span style={{ fontWeight: 700, color: 'var(--color-primary)', fontSize: '1.1rem' }}>
-                  ₹{parseFloat(successBooking.totalAmount || selectedService?.price || 2500).toLocaleString('en-IN')} {successBooking.currency || 'INR'}
+                <span style={{ fontWeight: 600, color: 'var(--color-primary)' }}>
+                  Sacred Dakshina on Request
                 </span>
               </div>
 
@@ -437,9 +444,9 @@ export default function BookConsultation() {
                   style={{ width: '100%', justifyContent: 'center', padding: '12px 20px', fontSize: '0.98rem' }}
                 >
                   {paymentLoading ? (
-                    <span>Processing Demo Payment...</span>
+                    <span>Confirming Reservation...</span>
                   ) : (
-                    <span>Simulate & Confirm Payment of ₹{parseFloat(successBooking.totalAmount || selectedService?.price || 2500).toLocaleString('en-IN')}</span>
+                    <span>Confirm Consultation & Darshan Slot</span>
                   )}
                 </button>
               </div>
@@ -657,8 +664,8 @@ export default function BookConsultation() {
                           <Clock size={13} />
                           <span>{svc.durationMinutes} Minutes</span>
                         </span>
-                        <span className="service-price-badge">
-                          ₹{parseFloat(svc.price || 2500).toLocaleString('en-IN')}
+                        <span className="service-tradition-tag">
+                          Agasthiyar Tradition
                         </span>
                       </div>
                     </div>

@@ -371,11 +371,19 @@
   gap: 4px;
 }
 
-.service-price-badge {
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.2rem;
-  font-weight: 700;
+.service-tradition-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
   color: #B43403;
+  background: rgba(229, 105, 16, 0.08);
+  border: 1px solid rgba(229, 105, 16, 0.18);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.service-price-badge {
+  display: none;
 }
 
 /* Step 3: Mode Toggle & Slots */
