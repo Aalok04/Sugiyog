@@ -59,13 +59,9 @@ export default function Navbar() {
   const navLinks = [
     { to: '/', label: 'Home', end: true },
     { to: '/about', label: 'Swami Ji' },
-    { to: '/nadi-shastra', label: 'Nadi Shastra' },
     { to: '/services', label: 'Consultations' },
     { to: '/upcoming-visits', label: 'Global Tours' },
-    { to: '/testimonials', label: 'Experiences' },
-    { to: '/events', label: 'Events' },
     { to: '/gallery', label: 'Gallery' },
-    { to: '/faq', label: 'FAQs' },
     { to: '/contact', label: 'Contact' },
   ];
 
@@ -110,30 +106,16 @@ export default function Navbar() {
 
           {/* Desktop Links */}
           <nav className="navbar-links" aria-label="Main Navigation">
-            <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} end>
-              Home
-            </NavLink>
-            <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Swami Ji
-            </NavLink>
-            <NavLink to="/nadi-shastra" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Nadi Shastra
-            </NavLink>
-            <NavLink to="/services" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Consultations
-            </NavLink>
-            <NavLink to="/upcoming-visits" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Global Tours
-            </NavLink>
-            <NavLink to="/testimonials" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Experiences
-            </NavLink>
-            <NavLink to="/gallery" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Gallery
-            </NavLink>
-            <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Contact
-            </NavLink>
+            {navLinks.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
 
           {/* Actions */}
@@ -150,11 +132,13 @@ export default function Navbar() {
               <span className="nav-whatsapp-text">WhatsApp</span>
             </a>
 
-            <Link to="/book" className="btn btn-luxury btn-sm nav-booking-btn">
-              <Calendar size={14} />
-              <span className="booking-btn-text-full">Book Consultation</span>
-              <span className="booking-btn-text-short">Book</span>
-            </Link>
+            {location.pathname !== '/book' && (
+              <Link to="/book" className="btn btn-luxury btn-sm nav-booking-btn">
+                <Calendar size={14} />
+                <span className="booking-btn-text-full">Book Consultation</span>
+                <span className="booking-btn-text-short">Book</span>
+              </Link>
+            )}
 
             <button
               type="button"

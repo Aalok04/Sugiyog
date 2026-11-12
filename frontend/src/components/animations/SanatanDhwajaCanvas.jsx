@@ -37,8 +37,13 @@ export default function SanatanDhwajaCanvas({
       canvas.height = height * dpr;
       if (gl) {
         gl.viewport(0, 0, canvas.width, canvas.height);
+        const aspect = canvas.width / canvas.height;
+        const isMobile = aspect < 1.0;
         if (updateMeshFn) {
-          updateMeshFn(canvas.width / canvas.height);
+          updateMeshFn(aspect);
+        }
+        if (isMobile !== currentIsMobile || !currentAspect || Math.abs(aspect - currentAspect) > 0.15) {
+          uploadTexture(isMobile, aspect);
         }
       }
     };
@@ -46,7 +51,7 @@ export default function SanatanDhwajaCanvas({
     window.addEventListener('resize', resizeCanvas);
 
     // 1. Full-Screen Saffron Silk Tapestry Texture (Power-of-Two 1024x512)
-    function createSanatanFlagTexture() {
+    function createSanatanFlagTexture(isMobile = false, aspect = 1.0) {
       const texCanvas = document.createElement('canvas');
       texCanvas.width = 1024;
       texCanvas.height = 512;
@@ -65,10 +70,19 @@ export default function SanatanDhwajaCanvas({
       ctx.fillStyle = saffronGrad;
       ctx.fillRect(0, 0, W, H);
 
+      // On mobile screens, place sacred Om medallion directly in the center zone requested by user (Circle 1: H * 0.48)
+      // On desktop, position gracefully in the left content sanctuary (W * 0.42, H * 0.44)
+      const centerX = isMobile ? W * 0.50 : W * 0.42;
+      const centerY = isMobile ? H * 0.48 : H * 0.44;
+      const discRadius = isMobile ? 62 : 70;
+
+      // Compensate for mesh UV stretch so medallion is ALWAYS a true circular medallion
+      const yScale = (H / W) * (isMobile ? (aspect * 1.06) : Math.max(aspect * 1.15, 5.2 / 2.45));
+
       // Radiant Saffron Core Aura around the sacred Surya Chakra
-      const coreAura = ctx.createRadialGradient(W * 0.525, H * 0.44, 20, W * 0.525, H * 0.44, W * 0.30);
-      coreAura.addColorStop(0.0, 'rgba(255, 125, 10, 0.30)');
-      coreAura.addColorStop(0.55, 'rgba(255, 85, 5, 0.14)');
+      const coreAura = ctx.createRadialGradient(centerX, centerY, 20, centerX, centerY, W * 0.30);
+      coreAura.addColorStop(0.0, isMobile ? 'rgba(255, 135, 15, 0.35)' : 'rgba(255, 125, 10, 0.30)');
+      coreAura.addColorStop(0.55, isMobile ? 'rgba(255, 95, 10, 0.16)' : 'rgba(255, 85, 5, 0.14)');
       coreAura.addColorStop(1.0, 'rgba(255, 55, 0, 0.0)');
       ctx.fillStyle = coreAura;
       ctx.fillRect(0, 0, W, H);
@@ -80,45 +94,46 @@ export default function SanatanDhwajaCanvas({
       }
 
       // Sacred Sun Mandala Medallion (Surya Chakra) with Om
-      // Perfectly scaled and positioned in open space between wisdom text and Swami Ji's portrait card
       ctx.save();
-      const centerX = W * 0.525;
-      const centerY = H * 0.44;
-      const discRadius = 70;
+      if (isMobile) {
+        ctx.globalAlpha = 0.90; // High clarity, radiant sacred Om medallion exactly in user circled center
+      }
+      ctx.translate(centerX, centerY);
+      ctx.scale(1, yScale);
 
       // Radiant Sunburst Aura
-      const auraGrad = ctx.createRadialGradient(centerX, centerY, 14, centerX, centerY, discRadius + 28);
+      const auraGrad = ctx.createRadialGradient(0, 0, 14, 0, 0, discRadius + 28);
       auraGrad.addColorStop(0, 'rgba(255, 240, 190, 0.90)');
       auraGrad.addColorStop(0.45, 'rgba(255, 195, 0, 0.70)');
       auraGrad.addColorStop(0.80, 'rgba(255, 120, 0, 0.30)');
       auraGrad.addColorStop(1, 'rgba(255, 80, 0, 0)');
       ctx.fillStyle = auraGrad;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, discRadius + 28, 0, Math.PI * 2);
+      ctx.arc(0, 0, discRadius + 28, 0, Math.PI * 2);
       ctx.fill();
 
       // Golden Sun Disc
-      const discGrad = ctx.createRadialGradient(centerX, centerY, 8, centerX, centerY, discRadius);
+      const discGrad = ctx.createRadialGradient(0, 0, 8, 0, 0, discRadius);
       discGrad.addColorStop(0.0, '#FFFDF5');
       discGrad.addColorStop(0.35, '#FFE082');
       discGrad.addColorStop(0.70, '#FFB300');
       discGrad.addColorStop(1.0, '#E67300');
       ctx.fillStyle = discGrad;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, discRadius, 0, Math.PI * 2);
+      ctx.arc(0, 0, discRadius, 0, Math.PI * 2);
       ctx.fill();
 
       // Filigree Ring & 16 Sacred Temple Rays
       ctx.strokeStyle = '#FFFFFF';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, discRadius - 3.5, 0, Math.PI * 2);
+      ctx.arc(0, 0, discRadius - 3.5, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.strokeStyle = '#871E2D';
       ctx.lineWidth = 1.8;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, discRadius, 0, Math.PI * 2);
+      ctx.arc(0, 0, discRadius, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.strokeStyle = '#FFE082';
@@ -126,25 +141,26 @@ export default function SanatanDhwajaCanvas({
       for (let i = 0; i < 16; i++) {
         const angle = (i * Math.PI * 2) / 16;
         ctx.beginPath();
-        ctx.moveTo(centerX + Math.cos(angle) * (discRadius + 2), centerY + Math.sin(angle) * (discRadius + 2));
-        ctx.lineTo(centerX + Math.cos(angle) * (discRadius + 14), centerY + Math.sin(angle) * (discRadius + 14));
+        ctx.moveTo(Math.cos(angle) * (discRadius + 2), Math.sin(angle) * (discRadius + 2));
+        ctx.lineTo(Math.cos(angle) * (discRadius + 14), Math.sin(angle) * (discRadius + 14));
         ctx.stroke();
       }
 
-      // Sacred ॐ (Om) Inscribed on the Flag
-      ctx.font = 'bold 90px "Cormorant Garamond", Georgia, "Noto Sans Devanagari", serif';
+      // Sacred ॐ (Om) Inscribed on the Flag - perfectly centered
+      const omFontSize = isMobile ? '72px' : '90px';
+      ctx.font = `bold ${omFontSize} "Cormorant Garamond", Georgia, "Noto Sans Devanagari", serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       ctx.fillStyle = 'rgba(74, 18, 29, 0.45)';
-      ctx.fillText('ॐ', centerX + 1.5, centerY + 1.5);
+      ctx.fillText('ॐ', 1.5, 1.5);
 
       ctx.fillStyle = '#4A101A';
-      ctx.fillText('ॐ', centerX, centerY);
+      ctx.fillText('ॐ', 0, 0);
 
       ctx.lineWidth = 2;
       ctx.strokeStyle = '#FFEAA7';
-      ctx.strokeText('ॐ', centerX, centerY);
+      ctx.strokeText('ॐ', 0, 0);
 
       ctx.restore();
 
@@ -297,10 +313,15 @@ export default function SanatanDhwajaCanvas({
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
-    // Dynamic mesh sizing to guarantee 100% full-screen coverage across all monitors
+    // Dynamic mesh sizing to guarantee 100% coverage and centered sacred Om across all screens
     const updateMesh = (aspect) => {
+      const isMobile = aspect < 1.0;
       const meshHeight = 2.45;
-      const meshWidth = Math.max(meshHeight * aspect * 1.15, 5.2);
+      // On mobile (aspect < 1.0), constrain meshWidth to aspect ratio with 6% wave margin so u=0.5 aligns with x=0 (the exact screen center)
+      const meshWidth = isMobile
+        ? meshHeight * aspect * 1.06
+        : Math.max(meshHeight * aspect * 1.15, 5.2);
+
       const positions = [];
       for (let r = 0; r <= ROWS; r++) {
         for (let c = 0; c <= COLS; c++) {
@@ -316,13 +337,16 @@ export default function SanatanDhwajaCanvas({
     };
 
     updateMeshFn = updateMesh;
-    resizeCanvas();
 
     // 4. Texture upload (Power-of-two 1024x512 with safe WebGL 1.0 parameters)
     const glTexture = gl.createTexture();
-    const uploadTexture = () => {
+    let currentIsMobile = null;
+    let currentAspect = 1.0;
+    const uploadTexture = (isMobile = false, aspect = 1.0) => {
       if (isDisposed) return;
-      const texImage = createSanatanFlagTexture();
+      currentIsMobile = isMobile;
+      currentAspect = aspect;
+      const texImage = createSanatanFlagTexture(isMobile, aspect);
       gl.bindTexture(gl.TEXTURE_2D, glTexture);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texImage);
@@ -331,10 +355,11 @@ export default function SanatanDhwajaCanvas({
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     };
-    uploadTexture();
+
+    resizeCanvas();
 
     if (document.fonts) {
-      document.fonts.ready.then(() => uploadTexture());
+      document.fonts.ready.then(() => uploadTexture(currentIsMobile, currentAspect));
     }
 
     // Matrix Helpers

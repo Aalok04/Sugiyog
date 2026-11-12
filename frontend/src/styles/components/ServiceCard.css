@@ -3,16 +3,18 @@
    ========================================================= */
 
 .service-card {
-  background-color: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(229, 105, 16, 0.04);
+  box-shadow: 0 8px 30px rgba(229, 105, 16, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.95);
 }
 
 .service-card::before {
@@ -23,14 +25,15 @@
   right: 0;
   height: 4px;
   background: linear-gradient(90deg, #E56910, #F59E0B);
-  opacity: 0;
+  opacity: 0.7;
   transition: opacity var(--transition-normal);
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(229, 105, 16, 0.12);
-  border-color: var(--color-primary-light);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 40px rgba(229, 105, 16, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 1);
+  border-color: rgba(245, 158, 11, 0.5);
 }
 
 .service-card:hover::before {

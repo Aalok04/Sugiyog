@@ -229,25 +229,24 @@
 }
 
 @media (max-width: 768px) {
-  /* Floating Book CTA on Mobile */
+  /* Floating Book CTA on Mobile - Sleek Circular Devotional Pill */
   .floating-book-btn {
     position: fixed;
-    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    left: 20px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
     z-index: 999;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     background: linear-gradient(135deg, #E56910 0%, #F59E0B 100%);
     color: #FFFFFF;
     border: 1.5px solid #FCD34D;
-    border-radius: var(--radius-full);
-    padding: 0.85rem;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
     box-shadow: 0 6px 20px rgba(229, 105, 16, 0.45), 0 0 12px rgba(245, 158, 11, 0.35);
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    font-weight: 600;
     text-decoration: none;
     transition: all var(--transition-fast);
     animation: bookFloatingPulse 3s infinite ease-in-out;
@@ -264,11 +263,17 @@
     color: #FFFFFF;
   }
 
-  /* Floating WhatsApp on Mobile */
+  /* Floating WhatsApp on Mobile - Sleek Circular Icon */
   .floating-whatsapp-btn {
-    padding: 0.85rem;
-    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    right: 20px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
   }
 
   .floating-whatsapp-btn span {

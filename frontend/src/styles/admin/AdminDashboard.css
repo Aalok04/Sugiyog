@@ -42,21 +42,24 @@
 }
 
 .stat-card {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-xl);
   padding: var(--space-5);
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  box-shadow: 0 1px 4px rgba(53, 37, 30, 0.05);
+  box-shadow: 0 4px 20px rgba(53, 37, 30, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95);
   transition: all var(--transition-fast);
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(53, 37, 30, 0.08);
-  border-color: var(--color-secondary);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 28px rgba(53, 37, 30, 0.1), inset 0 1px 1px rgba(255, 255, 255, 1);
+  border-color: rgba(245, 158, 11, 0.45);
 }
 
 .stat-icon {
@@ -138,11 +141,13 @@
 }
 
 .admin-card {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-xl);
   padding: var(--space-6);
-  box-shadow: 0 1px 4px rgba(53, 37, 30, 0.05);
+  box-shadow: 0 8px 30px rgba(53, 37, 30, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95);
   min-width: 0;
   max-width: 100%;
   overflow: hidden;

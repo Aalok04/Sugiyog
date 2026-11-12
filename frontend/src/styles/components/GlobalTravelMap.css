@@ -188,14 +188,16 @@
 
 /* Detail Panel / Card */
 .map-detail-panel {
-  background: rgba(255, 249, 239, 0.05);
-  border: 1px solid rgba(196, 154, 69, 0.35);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(252, 211, 77, 0.4);
+  border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .visit-preview-card {

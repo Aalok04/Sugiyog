@@ -81,10 +81,26 @@
   }
   .navbar-top-ribbon {
     text-align: center;
-    padding: 0.3rem 0;
+    padding: 0.22rem 0;
   }
   .navbar-top-container {
     justify-content: center;
+    padding: 0 var(--space-3);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Minimal Top Ribbon on Mobile - Sacred ॐ नमः शिवाय Only */
+  .top-ribbon-text {
+    display: none;
+  }
+  .top-ribbon-badge {
+    font-size: 0.74rem;
+    padding: 0.08rem 0.6rem;
+    letter-spacing: 0.08em;
+  }
+  .navbar-top-ribbon {
+    padding: 0.18rem 0;
   }
 }
 
@@ -358,18 +374,68 @@
   }
 }
 
-@media (max-width: 600px) {
-  .nav-whatsapp-text {
-    display: none;
+@media (max-width: 768px) {
+  .navbar {
+    height: 62px;
   }
+  .navbar-container {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .navbar-brand {
+    gap: 8px;
+  }
+  .brand-symbol {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-symbol span {
+    font-size: 1.25rem;
+  }
+  .brand-name {
+    font-size: 1.22rem;
+    letter-spacing: 0.05em;
+  }
+  .brand-subtext {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .navbar-actions {
+    gap: 8px;
+  }
+  /* Remove WhatsApp icon button from navbar on mobile as requested */
   .nav-whatsapp-link {
-    padding: 0.5rem;
+    display: none !important;
   }
   .booking-btn-text-full {
     display: none;
   }
   .booking-btn-text-short {
     display: inline;
+  }
+  .nav-booking-btn {
+    padding: 0.38rem 0.82rem;
+    font-size: 0.78rem;
+    border-radius: var(--radius-full);
+  }
+  .mobile-toggle-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-subtext {
+    display: none;
+  }
+  .navbar-container {
+    padding: 0 8px;
   }
 }
 

@@ -19,7 +19,6 @@ import {
   Video,
   HeartHandshake,
   FileText,
-  Star,
 } from 'lucide-react';
 import api from '../../services/api';
 import ServiceCard from '../../components/cards/ServiceCard';
@@ -118,86 +117,48 @@ export default function Home() {
         </div>
 
         <div className="hero-container">
-          <div className="hero-layout-grid">
-            <div className="hero-text-content">
-              {/* Sri Mandir Style Auspicious Pill Badge */}
-              <div className="hero-editorial-badge">
-                <span className="badge-flag">🚩</span>
-                <span>Maharishi Agasthiyar Tradition • 108 Sacred Classifications</span>
-              </div>
-
-              <h1 className="hero-headline">
-                Ancient Palm Leaf Wisdom. <span className="saffron-gradient">Your Destiny Revealed.</span>
-              </h1>
-
-              <p className="hero-supporting-text">
-                Discover the authentic tradition of Nadi Shastra through personal consultations with Pujya Swami Ji.
-                Inscribed upon original palm leaves (Olai Chuvadi) by Maharishi Agasthiyar, uncovering your soul’s karmic blueprint,
-                destined life milestones, and sanctified remedies.
-              </p>
-
-              <div className="hero-cta-cluster">
-                <Link to="/book" className="btn btn-luxury btn-lg">
-                  <Calendar size={18} />
-                  <span>Book Online Consultation</span>
-                </Link>
-                <a href="#nadi-story" className="btn btn-outline-gold btn-lg">
-                  <BookOpen size={18} />
-                  <span>Explore 16 Kandams</span>
-                </a>
-              </div>
-
-              <div className="hero-pillars-row">
-                <div className="hero-pillar-item">
-                  <span className="pillar-number">108</span>
-                  <span className="pillar-label">Thumbprint Classes</span>
-                </div>
-                <div className="hero-pillar-item">
-                  <span className="pillar-number">16</span>
-                  <span className="pillar-label">Sacred Kandams</span>
-                </div>
-                <div className="hero-pillar-item">
-                  <span className="pillar-number">4.9★</span>
-                  <span className="pillar-label">Devotee Trust Rating</span>
-                </div>
-                <div className="hero-pillar-item">
-                  <span className="pillar-number">Global</span>
-                  <span className="pillar-label">Online & City Darshan</span>
-                </div>
-              </div>
+          <div className="hero-text-content">
+            {/* Sri Mandir Style Auspicious Pill Badge */}
+            <div className="hero-editorial-badge">
+              <span className="badge-flag">🚩</span>
+              <span className="badge-text-full">Maharishi Agasthiyar Tradition • 108 Sacred Classifications</span>
+              <span className="badge-text-short">Agasthiyar Sacred Lineage</span>
             </div>
 
-            {/* Visual Portrait Frame with Gold Filigree & Sri Mandir Trust Pill */}
-            <div className="hero-portrait-container">
-              <div className="hero-portrait-gold-frame">
-                <div className="portrait-inner-card">
-                  <img
-                    src="/images/swamiji.jpg"
-                    alt="Pujya Swami Ji - Revered Vedic Seer and Nadi Shastra Custodian"
-                    className="portrait-photo"
-                  />
-                  <div className="portrait-caption-glass">
-                    <h4 className="caption-title">Pujya Swami Ji</h4>
-                    <p className="caption-lineage">Revered Spiritual Master & Nadi Shastra Custodian</p>
-                  </div>
-                </div>
+            <h1 className="hero-headline">
+              Ancient Palm Leaf Wisdom. <span className="saffron-gradient">Your Destiny Revealed.</span>
+            </h1>
 
-                {/* Floating Verified Devotee Testimonial Card (Sri Mandir Style) */}
-                <div className="portrait-trust-float-badge">
-                  <div className="trust-stars-compact">
-                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
-                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
-                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
-                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
-                    <Star size={13} fill="#F59E0B" color="#F59E0B" />
-                    <span className="trust-score">4.9/5 Rating</span>
-                  </div>
-                  <div className="trust-quote-compact">
-                    "Our family's exact ancestral names were recited!"
-                  </div>
-                </div>
-              </div>
+            <p className="hero-supporting-text">
+              Discover the authentic tradition of Nadi Shastra through personal consultations with Pujya Swami Ji.
+              Inscribed upon original palm leaves (Olai Chuvadi) by Maharishi Agasthiyar, uncovering your soul’s karmic blueprint,
+              destined life milestones, and sanctified remedies.
+            </p>
+
+            <div className="hero-cta-cluster">
+              <Link to="/book" className="btn btn-luxury btn-lg">
+                <Calendar size={18} />
+                <span>Book Online Consultation</span>
+              </Link>
+              <a href="#nadi-story" className="btn btn-outline-gold btn-lg">
+                <BookOpen size={18} />
+                <span>Explore 16 Kandams</span>
+              </a>
             </div>
+          </div>
+        </div>
+
+        {/* Full-bleed Portrait Panel completely filling the right hero area */}
+        <div className="hero-full-portrait-panel">
+          <img
+            src="/images/swamiji.jpg"
+            alt="Pujya Swami Ji - Revered Vedic Seer and Nadi Shastra Custodian"
+            className="hero-full-portrait-img"
+          />
+          <div className="hero-portrait-edge-blend" aria-hidden="true"></div>
+          <div className="portrait-caption-glass">
+            <h4 className="caption-title">Pujya Swami Ji</h4>
+            <p className="caption-lineage">Revered Spiritual Master & Nadi Shastra Custodian</p>
           </div>
         </div>
       </section>
@@ -618,7 +579,7 @@ export default function Home() {
               Reserve your personal online consultation or in-person city darshan appointment today.
             </p>
             <div className="cta-banner-actions">
-              <Link to="/book" className="btn btn-secondary btn-lg">
+              <Link to="/book" className="btn cta-btn-primary btn-lg">
                 <Calendar size={18} />
                 <span>Book a Consultation Now</span>
               </Link>
@@ -626,7 +587,7 @@ export default function Home() {
                 href="https://wa.me/919876543210?text=Namaste%20Swami%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20Nadi%20Shastra."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-luxury btn-lg"
+                className="btn cta-btn-whatsapp btn-lg"
               >
                 <MessageCircle size={18} />
                 <span>Instant WhatsApp Inquiry</span>

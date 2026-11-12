@@ -279,16 +279,11 @@ export default function UnderstandingNadiShastra() {
   return (
     <div className="section">
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header">
-          <div className="section-eyebrow">
-            <span>🚩 Maharishi Agasthiyar Tradition • 108 Sacred Classifications</span>
-          </div>
-          <h1 className="section-title">Understanding Ancient Nadi Shastra</h1>
-          <p className="section-subtitle">
-            The extraordinary science of human destiny inscribed on preserved palm leaves (Olai Chuvadi)
-            by Maharishi Agasthiyar and the Sapta Rishis over 2,000 years ago in Tamil Nadu.
-          </p>
+        {/* Single Header */}
+        <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto var(--space-8) auto' }}>
+          <h1 className="section-title" style={{ fontSize: 'clamp(2rem, 3.6vw, 2.75rem)', margin: 0 }}>
+            Ancient Nadi Shastra
+          </h1>
         </div>
 
         <div className="nadi-guide-container">

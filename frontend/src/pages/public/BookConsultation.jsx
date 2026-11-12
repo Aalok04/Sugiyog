@@ -502,16 +502,23 @@ export default function BookConsultation() {
     <div className="section booking-page-container">
       <div className="container">
         {/* Header */}
-        <div className="section-header" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto var(--space-8) auto' }}>
-          <h1 className="section-title">Schedule Your Nadi Consultation</h1>
-          <p className="section-subtitle">
+        <div className="booking-header-centered">
+          <h1 className="booking-headline">
+            Schedule Your <span className="saffron-gradient">Nadi Consultation</span>
+          </h1>
+          <p className="booking-supporting-text">
             Follow our 5-step guided reservation process to request your personal reading with Swami Ji.
           </p>
         </div>
 
         <div className="booking-wizard-card">
-          {/* Animated 5-Step Stepper Header */}
+          {/* Animated 5-Step Stepper Header with Continuous Track */}
           <div className="booking-progress-bar">
+            <div className="stepper-track-bg"></div>
+            <div
+              className="stepper-track-fill"
+              style={{ width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%` }}
+            ></div>
             {STEPS.map((step) => {
               const isCompleted = currentStep > step.id;
               const isActive = currentStep === step.id;
@@ -534,6 +541,16 @@ export default function BookConsultation() {
             })}
           </div>
 
+          {/* Mobile Active Step Status Bar */}
+          <div className="mobile-step-status-bar">
+            <div className="mobile-step-badge">
+              <span>Step {currentStep} of 5</span>
+            </div>
+            <div className="mobile-step-title">
+              {STEPS[currentStep - 1].title}
+            </div>
+          </div>
+
           {errorMessage && (
             <div style={{ padding: 'var(--space-4)', background: 'var(--color-danger-bg)', border: '1px solid var(--color-danger)', borderRadius: 'var(--radius-md)', color: 'var(--color-danger)', marginBottom: 'var(--space-6)', display: 'flex', gap: '8px', alignItems: 'center' }}>
               <AlertCircle size={18} />
@@ -544,10 +561,10 @@ export default function BookConsultation() {
           {/* STEP 1: CONSULTATION FORMAT */}
           {currentStep === 1 && (
             <div className="wizard-step-panel">
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', marginBottom: 'var(--space-2)' }}>
+              <h2 className="step-panel-title">
                 Step 1: Choose Your Consultation Format
               </h2>
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+              <p className="step-panel-desc">
                 Select whether you wish to connect with Swami Ji via private live video consultation, or meet in person during his scheduled city visits.
               </p>
 
@@ -556,28 +573,44 @@ export default function BookConsultation() {
                   className={`format-option-card ${format === 'ONLINE' ? 'selected' : ''}`}
                   onClick={() => setFormat('ONLINE')}
                 >
-                  <div style={{ color: 'var(--color-secondary-dark)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Video size={24} />
-                    <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700 }}>Worldwide Seekers</span>
+                  <div className="format-card-header">
+                    <div className="format-icon-wrap">
+                      <Video size={22} />
+                    </div>
+                    <span className="format-category-tag">Worldwide Seekers</span>
+                    {format === 'ONLINE' && <span className="format-selected-pill">✓ Selected</span>}
                   </div>
                   <h3 className="format-title">Online Video Consultation</h3>
                   <p className="format-desc">
                     Private live HD video session connecting seekers from any country. Direct line-by-line reading of your authenticated palm leaf with translation.
                   </p>
+                  <div className="format-highlights">
+                    <span className="format-pill">1-on-1 Video Darshan</span>
+                    <span className="format-pill">Direct Palm Leaf Reading</span>
+                    <span className="format-pill">Audio Recording Included</span>
+                  </div>
                 </div>
 
                 <div
                   className={`format-option-card ${format === 'IN_PERSON' ? 'selected' : ''}`}
                   onClick={() => setFormat('IN_PERSON')}
                 >
-                  <div style={{ color: 'var(--color-secondary-dark)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <MapPin size={24} />
-                    <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700 }}>City Darshan Tours</span>
+                  <div className="format-card-header">
+                    <div className="format-icon-wrap">
+                      <MapPin size={22} />
+                    </div>
+                    <span className="format-category-tag">City Darshan Tours</span>
+                    {format === 'IN_PERSON' && <span className="format-selected-pill">✓ Selected</span>}
                   </div>
                   <h3 className="format-title">In-Person City Visit</h3>
                   <p className="format-desc">
                     Meet Swami Ji in person at consecrated sanctuaries during his scheduled spiritual tours across India, Europe, USA, and Asia.
                   </p>
+                  <div className="format-highlights">
+                    <span className="format-pill">Personal Physical Presence</span>
+                    <span className="format-pill">Blessed Holy Prasad</span>
+                    <span className="format-pill">Sanctuary Atmosphere</span>
+                  </div>
                 </div>
               </div>
 
@@ -598,10 +631,10 @@ export default function BookConsultation() {
           {/* STEP 2: SERVICE SELECTION */}
           {currentStep === 2 && (
             <div className="wizard-step-panel">
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', marginBottom: 'var(--space-2)' }}>
+              <h2 className="step-panel-title">
                 Step 2: Select Consultation Offering
               </h2>
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+              <p className="step-panel-desc">
                 Choose the specialized palm leaf chapter (Kandam) or comprehensive life reading you require.
               </p>
 
@@ -614,17 +647,18 @@ export default function BookConsultation() {
                       className={`service-select-item ${isSelected ? 'selected' : ''}`}
                       onClick={() => setSelectedServiceId(svc.id)}
                     >
-                      <div>
+                      <div className="service-select-header">
                         <h4 className="service-select-title">{svc.title}</h4>
-                        <p className="service-select-desc">{svc.shortDescription || svc.description}</p>
+                        {isSelected && <span className="service-selected-pill">✓ Selected</span>}
                       </div>
+                      <p className="service-select-desc">{svc.shortDescription || svc.description}</p>
                       <div className="service-select-footer">
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <span className="service-duration-badge">
                           <Clock size={13} />
                           <span>{svc.durationMinutes} Minutes</span>
                         </span>
-                        <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>
-                          {isSelected ? 'Selected ✓' : 'Select'}
+                        <span className="service-price-badge">
+                          ₹{parseFloat(svc.price || 2500).toLocaleString('en-IN')}
                         </span>
                       </div>
                     </div>
@@ -652,30 +686,30 @@ export default function BookConsultation() {
           {/* STEP 3: CITY VISIT OR ONLINE APPOINTMENT SCHEDULING */}
           {currentStep === 3 && (
             <div className="wizard-step-panel">
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', marginBottom: 'var(--space-2)' }}>
+              <h2 className="step-panel-title">
                 Step 3: {format === 'IN_PERSON' ? 'Select City Tour & Appointment Slot' : 'Select Online Appointment Slot'}
               </h2>
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+              <p className="step-panel-desc">
                 {format === 'IN_PERSON'
                   ? 'Choose the city tour where you wish to meet Swami Ji in person.'
                   : 'Choose an instant slot in Swami Ji’s schedule, or submit preferred dates for request review.'}
               </p>
 
               {/* Mode Toggle: Instant vs Request */}
-              <div style={{ display: 'flex', gap: 'var(--space-4)', marginBottom: 'var(--space-6)' }}>
+              <div className="booking-mode-toggle-pill">
                 <button
                   type="button"
-                  className={`btn ${bookingMode === 'INSTANT' ? 'btn-primary' : 'btn-outline'} btn-sm`}
+                  className={`mode-toggle-btn ${bookingMode === 'INSTANT' ? 'active' : ''}`}
                   onClick={() => setBookingMode('INSTANT')}
                 >
-                  Instant Slot Reservation
+                  ⚡ Instant Slot Reservation
                 </button>
                 <button
                   type="button"
-                  className={`btn ${bookingMode === 'REQUEST_BASED' ? 'btn-primary' : 'btn-outline'} btn-sm`}
+                  className={`mode-toggle-btn ${bookingMode === 'REQUEST_BASED' ? 'active' : ''}`}
                   onClick={() => setBookingMode('REQUEST_BASED')}
                 >
-                  Custom Preferred Date Request
+                  🗓️ Preferred Date Request
                 </button>
               </div>
 

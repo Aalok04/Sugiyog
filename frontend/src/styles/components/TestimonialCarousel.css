@@ -4,12 +4,14 @@
 
 .testimonial-carousel-container {
   position: relative;
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-xl);
   padding: var(--space-10) var(--space-8) var(--space-8) var(--space-8);
-  box-shadow: 0 10px 32px rgba(229, 105, 16, 0.08);
+  box-shadow: 0 16px 44px rgba(229, 105, 16, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.95);
   max-width: 900px;
   margin: 0 auto;
   overflow: hidden;

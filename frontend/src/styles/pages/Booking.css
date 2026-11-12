@@ -1,30 +1,107 @@
 /* SUGIYOG — LUXURY 5-STEP BOOKING WIZARD STYLES */
 
 .booking-page-container {
-  padding: var(--space-12) 0 var(--space-20) 0;
+  padding: var(--space-6) 0 var(--space-20) 0;
   background-color: var(--color-background);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 153, 51, 0.12) 0%, rgba(255, 253, 249, 1) 480px);
+  min-height: 100vh;
 }
 
-.booking-wizard-card {
-  background-color: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10);
-  box-shadow: 0 12px 36px rgba(229, 105, 16, 0.08);
-  max-width: 880px;
+/* Sacred Header */
+.booking-header-centered {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto var(--space-6) auto;
+  padding: 0 var(--space-4);
+}
+
+.booking-editorial-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.38rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #FCD34D;
+  border-radius: var(--radius-full);
+  color: #9A2C02;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-4);
+  box-shadow: 0 4px 14px rgba(229, 105, 16, 0.08);
+}
+
+.booking-headline {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.12;
+  color: #250901;
+  margin-bottom: var(--space-3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.booking-headline .saffron-gradient {
+  background: linear-gradient(135deg, #B43403 0%, #E56910 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.booking-supporting-text {
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  color: #6B5B52;
+  line-height: 1.65;
+  max-width: 620px;
   margin: 0 auto;
 }
 
-/* 5-Step Animated Progress Stepper */
+/* Glassmorphic Wizard Main Card */
+.booking-wizard-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1.5px solid rgba(252, 211, 77, 0.55);
+  border-top: 4.5px solid var(--color-primary);
+  border-radius: var(--radius-2xl, 24px);
+  padding: var(--space-10) var(--space-12);
+  box-shadow: 0 20px 50px rgba(229, 105, 16, 0.09), 0 4px 12px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 1);
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 5-Step Stepper Progress Bar with Continuous Connecting Track */
 .booking-progress-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  margin-bottom: var(--space-10);
-  padding-bottom: var(--space-6);
-  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-8);
+  padding: var(--space-2) var(--space-4) var(--space-6) var(--space-4);
+  border-bottom: 1px solid rgba(229, 105, 16, 0.12);
+}
+
+.stepper-track-bg {
+  position: absolute;
+  top: 25px;
+  left: 36px;
+  right: 36px;
+  height: 3px;
+  background: rgba(229, 105, 16, 0.14);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.stepper-track-fill {
+  position: absolute;
+  top: 25px;
+  left: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, #FCD34D 0%, #E56910 100%);
+  z-index: 1;
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .step-indicator-item {
@@ -40,37 +117,39 @@
 }
 
 .step-circle {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  transition: all 0.3s ease;
-  border: 2px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(229, 105, 16, 0.25);
+  background: #FFFFFF;
+  color: #8C786A;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .step-indicator-item.active .step-circle {
-  background: var(--color-primary);
-  border-color: var(--color-secondary);
+  background: linear-gradient(135deg, #FF9933 0%, #E56910 100%);
+  border-color: #FCD34D;
   color: #FFFFFF;
-  box-shadow: 0 0 12px rgba(229, 105, 16, 0.35);
-  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(229, 105, 16, 0.45);
+  transform: scale(1.12);
 }
 
 .step-indicator-item.completed .step-circle {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
-  color: #1a0e05;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-color: #059669;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .step-label {
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -85,10 +164,31 @@
 }
 
 .step-indicator-item.completed .step-label {
-  color: var(--color-secondary-dark);
+  color: #059669;
 }
 
-/* Step 1: Format Options */
+/* Mobile Active Step Indicator Pill */
+.mobile-step-status-bar {
+  display: none;
+}
+
+/* Step Panel Headings */
+.step-panel-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.45rem, 3.2vw, 1.85rem);
+  color: #B43403;
+  margin-bottom: var(--space-1);
+  font-weight: 700;
+}
+
+.step-panel-desc {
+  color: #6B5B52;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+/* Step 1: Format Selection Cards */
 .booking-format-selector {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -97,50 +197,99 @@
 }
 
 .format-option-card {
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(229, 105, 16, 0.2);
+  border-radius: var(--radius-xl);
   padding: var(--space-6);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  background: var(--color-surface-card);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   position: relative;
 }
 
 .format-option-card:hover {
-  border-color: var(--color-secondary);
-  transform: translateY(-2px);
+  background: #FFFFFF;
+  border-color: rgba(245, 158, 11, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(229, 105, 16, 0.12);
 }
 
 .format-option-card.selected {
-  border-color: var(--color-primary);
-  background-color: rgba(112, 31, 45, 0.04);
-  box-shadow: 0 4px 14px rgba(112, 31, 45, 0.12);
+  border: 2px solid #E56910;
+  background: linear-gradient(135deg, #FFFDF9 0%, #FFF5EB 100%);
+  box-shadow: 0 10px 32px rgba(229, 105, 16, 0.18), inset 0 1px 1px rgba(255, 255, 255, 1);
 }
 
-.format-option-card.selected::after {
-  content: '✓';
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  color: var(--color-primary);
+.format-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.format-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(229, 105, 16, 0.12);
+  color: #E56910;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.format-category-tag {
+  font-size: 0.74rem;
   font-weight: 700;
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #9A2C02;
+  letter-spacing: 0.06em;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.format-selected-pill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #E56910, #B43403);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(180, 52, 3, 0.3);
 }
 
 .format-title {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-size: 1.35rem;
-  color: var(--color-primary);
+  color: #B43403;
   font-weight: 700;
+  margin: var(--space-2) 0 var(--space-1) 0;
 }
 
 .format-desc {
-  font-size: 0.84rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: #5C4A3E;
+  line-height: 1.55;
+  margin-bottom: var(--space-3);
+}
+
+.format-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.format-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  background: rgba(229, 105, 16, 0.08);
+  border: 1px solid rgba(229, 105, 16, 0.18);
+  border-radius: var(--radius-full);
+  color: #8A2602;
 }
 
 /* Step 2: Service Selection Cards */
@@ -152,98 +301,162 @@
 }
 
 .service-select-item {
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(229, 105, 16, 0.2);
+  border-radius: var(--radius-xl);
   padding: var(--space-5);
   cursor: pointer;
-  transition: all 0.2s ease;
-  background: var(--color-surface-card);
+  transition: all 0.25s ease;
+  background: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .service-select-item:hover {
-  border-color: var(--color-secondary);
+  border-color: rgba(245, 158, 11, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(229, 105, 16, 0.1);
 }
 
 .service-select-item.selected {
-  border-color: var(--color-primary);
-  background: rgba(112, 31, 45, 0.05);
+  border: 2px solid #E56910;
+  background: linear-gradient(135deg, #FFFDF9 0%, #FFF5EB 100%);
+  box-shadow: 0 8px 28px rgba(229, 105, 16, 0.15);
+}
+
+.service-select-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2);
 }
 
 .service-select-title {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-size: 1.25rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-1);
+  color: #B43403;
+  font-weight: 700;
+}
+
+.service-selected-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: #E56910;
+  color: #FFFFFF;
 }
 
 .service-select-desc {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  color: #5C4A3E;
   line-height: 1.5;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .service-select-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(196, 154, 69, 0.2);
-  padding-top: var(--space-2);
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
+  border-top: 1px dashed rgba(229, 105, 16, 0.2);
+  padding-top: var(--space-3);
 }
 
-/* Step 3: Slots and Visits */
+.service-duration-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #786457;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-price-badge {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #B43403;
+}
+
+/* Step 3: Mode Toggle & Slots */
+.booking-mode-toggle-pill {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--space-6);
+  background: rgba(229, 105, 16, 0.08);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(229, 105, 16, 0.15);
+}
+
+.mode-toggle-btn {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: transparent;
+  color: #786457;
+  text-align: center;
+}
+
+.mode-toggle-btn.active {
+  background: #FFFFFF;
+  color: #B43403;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
 .slots-selection-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: var(--space-3);
   margin: var(--space-5) 0 var(--space-8) 0;
 }
 
 .slot-pill {
-  padding: 0.85rem;
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1.5px solid rgba(229, 105, 16, 0.2);
+  border-radius: var(--radius-lg);
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: var(--color-surface);
+  background: #FFFFFF;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .slot-pill:hover {
-  border-color: var(--color-secondary);
-  background: var(--color-surface-hover);
+  border-color: #FCD34D;
+  background: #FFFDF9;
 }
 
 .slot-pill.active {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #FF9933 0%, #E56910 100%);
   color: #FFFFFF;
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(229, 105, 16, 0.25);
+  border-color: #E56910;
+  box-shadow: 0 4px 16px rgba(229, 105, 16, 0.35);
 }
 
 .slot-pill.active span {
   color: #FFFFFF !important;
 }
 
-/* Step 4: Thumbprint Guide & Upload */
+/* Step 4: Sacred Thumbprint Guide Banner */
 .thumbprint-guide-banner {
-  background: var(--color-surface);
-  border: 1px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #FFFDF8 0%, #FFF5EB 100%);
+  border: 1.5px solid rgba(252, 211, 77, 0.8);
+  border-radius: var(--radius-xl);
   padding: var(--space-6) var(--space-8);
   margin-bottom: var(--space-8);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  box-shadow: 0 6px 20px rgba(229, 105, 16, 0.06);
 }
 
 .thumbprint-guide-header {
@@ -254,14 +467,27 @@
   flex-wrap: wrap;
 }
 
-.thumbprint-guide-title {
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.3rem;
-  color: var(--color-primary);
-  font-weight: 700;
+.thumbprint-title-group {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.thumbprint-guide-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  color: #B43403;
+  font-weight: 700;
+}
+
+.thumb-rule-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  background: rgba(229, 105, 16, 0.12);
+  color: #9A2C02;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(229, 105, 16, 0.25);
 }
 
 .thumbprint-guide-steps {
@@ -271,10 +497,10 @@
 }
 
 .thumb-step-item {
-  background: var(--color-white);
+  background: #FFFFFF;
   padding: var(--space-4);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(229, 105, 16, 0.18);
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -283,33 +509,34 @@
 .thumb-step-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #B43403;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .thumb-step-text {
   font-size: 0.82rem;
-  color: var(--color-text);
+  color: #5C4A3E;
   line-height: 1.5;
 }
 
-/* Step 5: Review & Summary */
+/* Step 5: Review Summary Card */
 .review-summary-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-6);
+  background: linear-gradient(135deg, #FFFDF8 0%, #FFF8F0 100%);
+  border: 1.5px solid rgba(252, 211, 77, 0.85);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-8);
   margin-bottom: var(--space-6);
+  box-shadow: 0 8px 24px rgba(229, 105, 16, 0.08);
 }
 
 .review-section-title {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-3);
+  font-size: 1.3rem;
+  color: #B43403;
+  margin-bottom: var(--space-4);
   padding-bottom: var(--space-2);
-  border-bottom: 1px solid rgba(196, 154, 69, 0.3);
+  border-bottom: 1px dashed rgba(229, 105, 16, 0.25);
 }
 
 .review-details-grid {
@@ -326,21 +553,21 @@
 }
 
 .review-label {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  color: #8C786A;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .review-value {
   font-weight: 600;
-  color: var(--color-text);
+  color: #250901;
 }
 
 .booking-status-notice {
   padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   margin-bottom: var(--space-6);
   display: flex;
   align-items: flex-start;
@@ -350,25 +577,25 @@
 }
 
 .booking-status-notice.confirmed-notice {
-  background: rgba(46, 125, 50, 0.1);
-  border: 1px solid rgba(46, 125, 50, 0.3);
+  background: rgba(46, 125, 50, 0.08);
+  border: 1.5px solid #2e7d32;
   color: #1b5e20;
 }
 
 .booking-status-notice.request-notice {
-  background: rgba(196, 154, 69, 0.15);
-  border: 1px solid var(--color-secondary);
-  color: #5c420b;
+  background: rgba(229, 105, 16, 0.1);
+  border: 1.5px solid rgba(229, 105, 16, 0.35);
+  color: #7c2d12;
 }
 
-/* Navigation Buttons at bottom of Wizard */
+/* Wizard Navigation Actions */
 .wizard-nav-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: var(--space-8);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(229, 105, 16, 0.15);
   gap: var(--space-4);
   flex-wrap: wrap;
 }
@@ -376,11 +603,11 @@
 /* Success View Card */
 .booking-success-box {
   background: #FFFDF8;
-  border: 2px solid var(--color-secondary);
-  border-radius: var(--radius-lg);
+  border: 2px solid #FCD34D;
+  border-radius: var(--radius-2xl, 24px);
   padding: var(--space-12) var(--space-8);
   text-align: center;
-  box-shadow: 0 16px 40px rgba(112, 31, 45, 0.15);
+  box-shadow: 0 20px 50px rgba(180, 52, 3, 0.12);
 }
 
 .success-badge-icon {
@@ -396,22 +623,264 @@
   color: var(--color-success);
 }
 
-/* Responsive */
+/* ---------------------------------------------------------
+   RESPONSIVE MOBILE STYLES (Inspiring & Frictionless)
+   --------------------------------------------------------- */
 @media (max-width: 768px) {
+  .booking-page-container {
+    padding: 14px 0 32px 0;
+    background-image: radial-gradient(circle at 50% 0%, rgba(255, 153, 51, 0.16) 0%, rgba(255, 253, 249, 1) 320px);
+  }
+
+  .booking-header-centered {
+    margin-bottom: 14px;
+    padding: 0 var(--space-3);
+  }
+
+  .booking-editorial-badge {
+    display: none;
+  }
+
+  .booking-headline {
+    font-size: clamp(1.75rem, 6.8vw, 2.15rem);
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+
+  .booking-supporting-text {
+    font-size: 0.86rem;
+    line-height: 1.45;
+    padding: 0 4px;
+    max-width: 380px;
+    margin-bottom: 4px;
+  }
+
+  .booking-wizard-card {
+    padding: 1.25rem 1rem 1.6rem 1rem;
+    border-radius: 20px;
+    margin: 0 10px;
+    border: 1.5px solid rgba(252, 211, 77, 0.65);
+    box-shadow: 0 16px 36px rgba(229, 105, 16, 0.1), 0 2px 6px rgba(0, 0, 0, 0.03);
+    border-top: 4px solid #E56910;
+  }
+
+  /* 5-Step Stepper on Mobile */
   .booking-progress-bar {
-    overflow-x: auto;
-    padding-bottom: var(--space-4);
-    gap: var(--space-3);
+    margin-bottom: 12px;
+    padding: 4px 6px 14px 6px;
+    border-bottom: 1px solid rgba(229, 105, 16, 0.12);
+  }
+
+  .stepper-track-bg,
+  .stepper-track-fill {
+    top: 18px;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 
   .step-label {
     display: none;
   }
 
-  .booking-format-selector,
-  .services-selection-grid,
-  .thumbprint-guide-steps,
+  /* Mobile Active Step Status Bar */
+  .mobile-step-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #FFFDF8 0%, #FFF5EB 100%);
+    border: 1.5px solid rgba(252, 211, 77, 0.75);
+    border-radius: 12px;
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 3px 10px rgba(229, 105, 16, 0.06);
+  }
+
+  .mobile-step-badge {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #B43403;
+    background: rgba(229, 105, 16, 0.12);
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .mobile-step-title {
+    font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #250901;
+  }
+
+  .step-panel-title {
+    font-size: 1.45rem;
+    margin-bottom: 4px;
+  }
+
+  .step-panel-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  /* Step 1: Format Options on Mobile */
+  .booking-format-selector {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .format-option-card {
+    padding: 14px 12px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(229, 105, 16, 0.22);
+  }
+
+  .format-option-card.selected {
+    border: 2px solid #E56910;
+    background: linear-gradient(135deg, #FFFDF9 0%, #FFF5EB 100%);
+    box-shadow: 0 8px 24px rgba(229, 105, 16, 0.14);
+  }
+
+  .format-icon-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .format-category-tag {
+    font-size: 0.72rem;
+    margin-left: 8px;
+  }
+
+  .format-selected-pill {
+    font-size: 0.70rem;
+    padding: 3px 9px;
+  }
+
+  .format-title {
+    font-size: 1.25rem;
+    margin: 8px 0 4px 0;
+  }
+
+  .format-desc {
+    font-size: 0.80rem;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .format-pill {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+  }
+
+  /* Step 2: Services on Mobile */
+  .services-selection-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .service-select-item {
+    border-radius: 16px;
+    padding: 14px;
+    border: 1.5px solid rgba(229, 105, 16, 0.22);
+  }
+
+  .service-select-item.selected {
+    border: 2px solid #E56910;
+    background: linear-gradient(135deg, #FFFDF9 0%, #FFF5EB 100%);
+    box-shadow: 0 8px 22px rgba(229, 105, 16, 0.12);
+  }
+
+  /* Step 3: Slots & Mode Toggle on Mobile */
+  .booking-mode-toggle-pill {
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .mode-toggle-btn {
+    padding: 9px 12px;
+    font-size: 0.82rem;
+  }
+
+  .slots-selection-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* Step 4: Thumbprint on Mobile */
+  .thumbprint-guide-banner {
+    padding: 14px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+  }
+
+  .thumbprint-guide-steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .thumb-step-item {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Form Fields */
+  .responsive-two-col,
+  .responsive-three-col,
+  .form-row-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  /* Step 5: Review on Mobile */
   .review-details-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .review-summary-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  /* Wizard Navigation Actions on Mobile */
+  .wizard-nav-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+
+  .wizard-nav-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-full);
+  }
+
+  .wizard-nav-actions .btn-primary {
+    background: linear-gradient(135deg, #FF9933 0%, #E56910 100%);
+    box-shadow: 0 8px 22px rgba(229, 105, 16, 0.35);
   }
 }
